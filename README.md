@@ -13,6 +13,8 @@
   <img src="https://img.shields.io/badge/platform-Windows-0078d4?style=flat-square" alt="platform">
   <img src="https://img.shields.io/badge/Go-1.24-00ADD8?style=flat-square&logo=go" alt="go">
   <img src="https://img.shields.io/badge/Wails-v2-red?style=flat-square" alt="wails">
+   <a href="https://linux.do"><img src="https://img.shields.io/badge/LINUX%20DO-社区-f0b752?style=flat-square" alt="LINUX
+   DO"></a>
   <img src="https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square" alt="license">
 </p>
 
