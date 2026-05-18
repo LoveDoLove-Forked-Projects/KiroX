@@ -38,7 +38,7 @@ var (
 
 // GetCurrentVersion 获取当前版本号
 func GetCurrentVersion() string {
-	return "v1.0.1"
+	return "v1.0.2"
 }
 
 // CleanupTemp 清理更新遗留的临时文件
