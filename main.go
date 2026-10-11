@@ -1,3 +1,5 @@
+// main.go 嵌入前端资源并配置桌面应用启动入口。
+
 package main
 
 import (
@@ -16,7 +18,7 @@ func main() {
 	runDesktopApp()
 }
 
-// runDesktopApp 运行桌面应用
+// runDesktopApp 配置窗口、生命周期回调和前端绑定，并启动桌面应用。
 func runDesktopApp() {
 	app := NewApp()
 

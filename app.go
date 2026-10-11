@@ -1,33 +1,32 @@
+// app.go 管理应用生命周期与既有任务接口。
+
 package main
 
 import (
 	"context"
 	"log"
-	"net/url"
-	"os"
-	"reg_go/internal/browser"
-	"reg_go/internal/email"
-	"reg_go/internal/proxy"
+	"time"
 
 	"github.com/wailsapp/wails/v2/pkg/runtime"
 
+	"reg_go/internal/browser"
+	"reg_go/internal/proxy"
 	"reg_go/internal/storage"
 	"reg_go/internal/task"
-	"reg_go/internal/updater"
-	"time"
 )
 
+// App 保存桌面运行上下文，并向前端暴露应用接口。
 type App struct {
 	ctx         context.Context
 	startupDone chan struct{}
 }
 
-// NewApp 创建新的 App 实例
+// NewApp 创建应用实例，并准备启动完成信号。
 func NewApp() *App {
 	return &App{startupDone: make(chan struct{})}
 }
 
-// startup 在应用启动时调用
+// startup 初始化桌面上下文、日志与本地存储配置。
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 	close(a.startupDone)
@@ -48,293 +47,21 @@ func (a *App) startup(ctx context.Context) {
 
 }
 
-// restoreWindow brings the existing window back when the executable is launched again.
+// restoreWindow 等待首次启动完成后恢复已有窗口。
 func (a *App) restoreWindow() {
 	<-a.startupDone
 	runtime.WindowUnminimise(a.ctx)
 	runtime.WindowShow(a.ctx)
 }
 
-// shutdown 在应用关闭时调用
+// shutdown 在应用关闭前同步保存尚未写盘的本地缓存。
 func (a *App) shutdown(ctx context.Context) {
 	storage.FlushAccountsSync()
-}
-
-// OpenURL 在系统默认浏览器中打开 URL
-func (a *App) OpenURL(url string) {
-	runtime.BrowserOpenURL(a.ctx, url)
-}
-
-// ShowDesktopNotification displays a native desktop notification when supported.
-func (a *App) ShowDesktopNotification(title, message string) map[string]interface{} {
-	if err := showDesktopNotification(title, message); err != nil {
-		return map[string]interface{}{"success": false, "error": err.Error()}
-	}
-	return map[string]interface{}{"success": true}
-}
-
-// logWriter 自定义日志写入器，根据运行状态路由日志
-type logWriter struct{}
-
-func (w *logWriter) Write(p []byte) (int, error) {
-	msg := string(p)
-	task.Manager.AppendLog(msg)
-	storage.AppendPersistentLog(msg)
-	return os.Stderr.Write(p)
 }
 
 // GetStatus 获取任务状态
 func (a *App) GetStatus() map[string]interface{} {
 	return task.Manager.GetStatus()
-}
-
-// GetLogs 获取日志
-func (a *App) GetLogs() []string {
-	return task.Manager.GetLogs()
-}
-
-// GetCurrentVersion 获取当前应用版本。
-func (a *App) GetCurrentVersion() string {
-	return updater.GetCurrentVersion()
-}
-
-// ---- MoeMail ----
-
-func (a *App) GetMoeMailConfigs() []email.MoeMailConfig {
-	return email.GetMoeMailConfigs()
-}
-
-func (a *App) SaveMoeMailConfigs(configsJSON string) map[string]interface{} {
-	return email.SaveMoeMailConfigs(configsJSON)
-}
-
-func (a *App) TestMoeMailConnection(configJSON string) map[string]interface{} {
-	return email.TestMoeMailConnection(configJSON)
-}
-
-// ---- CloudMail ----
-
-func (a *App) GetCloudMailConfigs() []email.CloudMailConfig {
-	return email.GetCloudMailConfigs()
-}
-
-func (a *App) SaveCloudMailConfigs(configsJSON string) map[string]interface{} {
-	return email.SaveCloudMailConfigs(configsJSON)
-}
-
-func (a *App) TestCloudMailConnection(configJSON string) map[string]interface{} {
-	return email.TestCloudMailConnection(configJSON)
-}
-
-// ---- Outlook ----
-
-func (a *App) AddOutlookAccounts(data string) map[string]interface{} {
-	return email.AddOutlookAccounts(data)
-}
-
-func (a *App) GetOutlookAccounts() []map[string]interface{} {
-	return email.GetOutlookAccounts()
-}
-
-func (a *App) DeleteOutlookAccount(em string) map[string]interface{} {
-	return email.DeleteOutlookAccount(em)
-}
-
-func (a *App) ClearOutlookAccounts() map[string]interface{} {
-	return email.ClearOutlookAccounts()
-}
-
-func (a *App) ClearRegisteredOutlookAccounts() map[string]interface{} {
-	return email.ClearRegisteredOutlookAccounts()
-}
-
-func (a *App) ImportOutlookFile(filePath string) map[string]interface{} {
-	return email.ImportOutlookFile(filePath)
-}
-
-// ---- iCloud ----
-
-func (a *App) AddICloudAccounts(data string) map[string]interface{} {
-	return email.AddICloudAccounts(data)
-}
-
-func (a *App) GetICloudAccounts() []map[string]interface{} {
-	return email.GetICloudAccounts()
-}
-
-func (a *App) DeleteICloudAccount(em string) map[string]interface{} {
-	return email.DeleteICloudAccount(em)
-}
-
-func (a *App) ClearICloudAccounts() map[string]interface{} {
-	return email.ClearICloudAccounts()
-}
-
-func (a *App) ImportICloudFile(filePath string) map[string]interface{} {
-	return email.ImportICloudFile(filePath)
-}
-
-// ---- MailNest ----
-
-func (a *App) TestMailNestConnection(configJSON string) map[string]interface{} {
-	return email.TestMailNestConnection(configJSON)
-}
-
-func (a *App) SaveMailNestConfig(configsJSON string) map[string]interface{} {
-	return email.SaveMailNestConfig(configsJSON)
-}
-
-func (a *App) GetMailNestConfig() email.MailNestConfig {
-	return email.GetMailNestConfig()
-}
-
-// SelectDirectory 选择目录 (Wails Dialog)
-func (a *App) SelectDirectory() string {
-	path, err := runtime.OpenDirectoryDialog(a.ctx, runtime.OpenDialogOptions{
-		Title: "选择目录",
-	})
-	if err != nil {
-		log.Printf("选择目录失败: %v", err)
-		return ""
-	}
-	return path
-}
-
-// SelectOutlookFile 选择 Outlook 账号文件 (Wails Dialog)
-func (a *App) SelectOutlookFile() string {
-	path, err := runtime.OpenFileDialog(a.ctx, runtime.OpenDialogOptions{
-		Title: "选择 Outlook 账号文件",
-		Filters: []runtime.FileFilter{
-			{
-				DisplayName: "文本文件 (*.txt)",
-				Pattern:     "*.txt",
-			},
-			{
-				DisplayName: "CSV 文件 (*.csv)",
-				Pattern:     "*.csv",
-			},
-			{
-				DisplayName: "所有文件 (*.*)",
-				Pattern:     "*.*",
-			},
-		},
-	})
-	if err != nil {
-		log.Printf("选择文件失败: %v", err)
-		return ""
-	}
-	return path
-}
-
-// SelectICloudFile 选择 iCloud 账号文件 (Wails Dialog)
-func (a *App) SelectICloudFile() string {
-	path, err := runtime.OpenFileDialog(a.ctx, runtime.OpenDialogOptions{
-		Title: "选择 iCloud 账号文件",
-		Filters: []runtime.FileFilter{
-			{
-				DisplayName: "CSV 文件 (*.csv)",
-				Pattern:     "*.csv",
-			},
-			{
-				DisplayName: "文本文件 (*.txt)",
-				Pattern:     "*.txt",
-			},
-			{
-				DisplayName: "所有文件 (*.*)",
-				Pattern:     "*.*",
-			},
-		},
-	})
-	if err != nil {
-		log.Printf("选择文件失败: %v", err)
-		return ""
-	}
-	return path
-}
-
-// GetDataDir 前端获取当前存储目录
-func (a *App) GetDataDir() string {
-	return storage.GetDataDir()
-}
-
-// SetDataDir 设置自定义存储目录（自动迁移旧数据）
-func (a *App) SetDataDir(dir string) map[string]interface{} {
-	path, err := storage.SetDataDirPath(dir)
-	if err != nil {
-		return map[string]interface{}{"error": err.Error()}
-	}
-	proxy.InitPool(path)
-	return map[string]interface{}{"success": true, "path": path}
-}
-
-// ResetDataDir 重置为默认存储目录
-func (a *App) ResetDataDir() map[string]interface{} {
-	path, err := storage.ResetDataDirPath()
-	if err != nil {
-		return map[string]interface{}{"error": err.Error()}
-	}
-	proxy.InitPool(path)
-	return map[string]interface{}{"success": true, "path": path}
-}
-
-// GetResultOutputDir 获取注册结果输出目录（明文 accounts.json 的写入位置）
-func (a *App) GetResultOutputDir() string {
-	return storage.GetResultOutputDir()
-}
-
-// SetResultOutputDir 设置注册结果输出目录
-func (a *App) SetResultOutputDir(dir string) map[string]interface{} {
-	path, err := storage.SetResultOutputDir(dir)
-	if err != nil {
-		return map[string]interface{}{"error": err.Error()}
-	}
-	return map[string]interface{}{"success": true, "path": path}
-}
-
-// ResetResultOutputDir 重置为默认输出目录
-func (a *App) ResetResultOutputDir() map[string]interface{} {
-	path, err := storage.ResetResultOutputDir()
-	if err != nil {
-		return map[string]interface{}{"error": err.Error()}
-	}
-	return map[string]interface{}{"success": true, "path": path}
-}
-
-// GetLanguage 获取当前界面语言代码，空字符串表示未设置（前端应回落到 OS 语言）
-func (a *App) GetLanguage() string {
-	return storage.GetLanguage()
-}
-
-// GetAppSettings returns the unified task, interface and notification settings.
-func (a *App) GetAppSettings() storage.AppSettings {
-	return storage.GetAppSettings()
-}
-
-// SaveAppSettings validates and persists all runtime settings atomically.
-func (a *App) SaveAppSettings(settings storage.AppSettings) map[string]interface{} {
-	saved, err := storage.SaveAppSettings(settings)
-	if err != nil {
-		return map[string]interface{}{"error": err.Error()}
-	}
-	storage.ConfigurePersistentLogs(saved.PersistentLogs, saved.LogRetentionDays)
-	return map[string]interface{}{"success": true, "settings": saved}
-}
-
-func (a *App) OpenLogsDir() {
-	path := storage.GetLogsDir()
-	runtime.BrowserOpenURL(a.ctx, (&url.URL{Scheme: "file", Path: path}).String())
-}
-
-func (a *App) ClearLogs() map[string]interface{} {
-	if err := storage.ClearLogs(); err != nil {
-		return map[string]interface{}{"error": err.Error()}
-	}
-	return map[string]interface{}{"success": true}
-}
-
-// GetOSLanguage 返回操作系统语言代码 "zh"/"en"/"ja"，用于首次启动自动选语言
-func (a *App) GetOSLanguage() string {
-	return detectOSLanguage()
 }
 
 // StartTask 启动注册任务
@@ -347,18 +74,11 @@ func (a *App) StopTask() map[string]interface{} {
 	return task.StopTask(true)
 }
 
-// CheckUpdate 手动检查更新
-func (a *App) CheckUpdate() map[string]interface{} {
-	return updater.CheckUpdate()
-}
-
 // ResetFingerprintCache 清空所有按代理缓存的浏览器指纹，下一次注册重新生成
 func (a *App) ResetFingerprintCache() map[string]interface{} {
 	browser.ResetIdentityCache()
 	return map[string]interface{}{"success": true}
 }
-
-// ---- 多代理池 ----
 
 // ListProxyPool 返回当前代理池
 func (a *App) ListProxyPool() []proxy.PoolEntry {

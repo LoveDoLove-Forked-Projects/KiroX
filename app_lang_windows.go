@@ -1,5 +1,7 @@
 //go:build windows
 
+// app_lang_windows.go 通过 Windows 系统接口读取用户语言。
+
 package main
 
 import (
@@ -7,7 +9,7 @@ import (
 	"unsafe"
 )
 
-// detectOSLanguageNative 通过 Windows API GetUserDefaultLocaleName 获取系统语言
+// detectOSLanguageNative 通过 GetUserDefaultLocaleName 获取用户区域设置。
 func detectOSLanguageNative() string {
 	kernel32 := syscall.NewLazyDLL("kernel32.dll")
 	proc := kernel32.NewProc("GetUserDefaultLocaleName")

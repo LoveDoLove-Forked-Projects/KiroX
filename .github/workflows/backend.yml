@@ -1,0 +1,55 @@
+name: Backend checks
+
+on:
+  push:
+    paths:
+      - '*.go'
+      - 'go.mod'
+      - 'go.sum'
+      - 'internal/**'
+      - 'tools/go-check/**'
+      - 'frontend/**'
+      - 'docs/backend.md'
+      - '.github/workflows/backend.yml'
+  pull_request:
+    paths:
+      - '*.go'
+      - 'go.mod'
+      - 'go.sum'
+      - 'internal/**'
+      - 'tools/go-check/**'
+      - 'frontend/**'
+      - 'docs/backend.md'
+      - '.github/workflows/backend.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-go@v6
+        with:
+          go-version-file: go.mod
+          cache: true
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install frontend dependencies
+        run: npm ci
+        working-directory: frontend
+      - name: Build embedded frontend assets
+        run: npm run build
+        working-directory: frontend
+      - name: Check Go conventions
+        run: go run ./tools/go-check
+      - name: Vet common backend packages
+        run: go vet . ./internal/storage ./internal/updater ./tools/go-check
+      - name: Test common backend packages with race detector
+        run: go test -race . ./internal/storage ./internal/updater ./tools/go-check
+      - name: Compile desktop application
+        run: go build -o "$env:RUNNER_TEMP/kirox-backend-check.exe" .

@@ -1,3 +1,5 @@
+// updater.go 查询发布元数据并比较应用版本。
+
 package updater
 
 import (
@@ -21,7 +23,7 @@ type githubRelease struct {
 	HTMLURL     string `json:"html_url"`
 }
 
-// GetCurrentVersion returns the version embedded in the application.
+// GetCurrentVersion 返回当前应用内置版本。
 func GetCurrentVersion() string {
 	return "v1.0.4"
 }
@@ -49,8 +51,7 @@ func semverGreater(a, b string) bool {
 	return false
 }
 
-// CheckUpdate fetches release metadata. Installation is handled by the user
-// after opening the release page; the application never replaces its binary.
+// CheckUpdate 查询最新发布版本，并返回版本、变更记录和下载页面。
 func CheckUpdate() map[string]interface{} {
 	currentVersion := GetCurrentVersion()
 	client := &http.Client{Timeout: 10 * time.Second}

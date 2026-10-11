@@ -1,3 +1,5 @@
+// app_lang_test.go 验证区域设置到界面语言的映射。
+
 package main
 
 import "testing"

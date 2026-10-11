@@ -1,3 +1,5 @@
+// app_lang.go 将系统区域设置映射为支持的界面语言。
+
 package main
 
 import (
@@ -21,7 +23,7 @@ func detectOSLanguage() string {
 	return "en"
 }
 
-// mapLocaleToLang 把 locale 字符串（zh_CN.UTF-8 / ja-JP / en_US 等）映射为支持的语言代码
+// mapLocaleToLang 将区域设置映射为支持的语言代码，无法匹配时返回空字符串。
 func mapLocaleToLang(locale string) string {
 	s := strings.ToLower(locale)
 	switch {

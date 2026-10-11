@@ -144,6 +144,8 @@ wails build -nsis
 
 `node frontend/build.js` 会将静态资源整理到 `frontend/dist/`；前端的 `npm run dev` / `npm run build` 都执行这一构建脚本，不会启动独立 Web 服务。完整功能依赖 Wails 提供的 Go 方法绑定，应通过 `wails dev` 运行桌面应用。
 
+后端公共层的模块划分、文件长度与注释约定，以及本地检查命令见 [Go 后端工程规范](docs/backend.md)。
+
 ---
 
 ## 使用说明

@@ -1,3 +1,5 @@
+// logs.go 管理日志保留期限、敏感字段脱敏与日志清理。
+
 package storage
 
 import (
@@ -16,7 +18,7 @@ var (
 	secretLogPattern     = regexp.MustCompile(`(?i)(accessToken|refreshToken|clientSecret|device_code|user_code|regCode|workflowState|code|验证码)(\s*[:=]\s*)([^\s,}]+)`)
 )
 
-// ConfigurePersistentLogs updates file logging and removes expired files.
+// ConfigurePersistentLogs 更新日志开关和有效的保留天数，并清理过期日志。
 func ConfigurePersistentLogs(enabled bool, retentionDays int) {
 	persistentLogMu.Lock()
 	defer persistentLogMu.Unlock()
@@ -27,7 +29,7 @@ func ConfigurePersistentLogs(enabled bool, retentionDays int) {
 	pruneLogsLocked(time.Now())
 }
 
-// AppendPersistentLog writes a redacted copy. UI logs remain unchanged in memory.
+// AppendPersistentLog 将敏感字段脱敏后追加到按日期命名的日志文件。
 func AppendPersistentLog(message string) {
 	persistentLogMu.Lock()
 	defer persistentLogMu.Unlock()
@@ -62,7 +64,7 @@ func pruneLogsLocked(now time.Time) {
 	}
 }
 
-// ClearLogs removes only KiroX .log files.
+// ClearLogs 删除应用日志目录中的 .log 文件。
 func ClearLogs() error {
 	persistentLogMu.Lock()
 	defer persistentLogMu.Unlock()
