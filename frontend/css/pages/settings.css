@@ -99,12 +99,6 @@
   color: var(--text-secondary);
 }
 
-.settings-field .dropdown-selected {
-  min-height: 38px;
-  box-sizing: border-box;
-  font-weight: 500;
-}
-
 .settings-inline-item {
   display: flex;
   flex-direction: row;

@@ -54,16 +54,6 @@
   font-weight: 700;
 }
 
-#cfg-count.input-compact,
-#cfg-concurrency.input-compact,
-#cfg-delay.input-compact,
-#ip-form-host.input-compact,
-#ip-form-port.input-compact,
-#ip-form-user.input-compact,
-#ip-form-pass.input-compact {
-  height: 38px;
-}
-
 #ntm-modal-content .field-last,
 #moemail-config-select .field-last,
 #cloudmail-config-select .field-last,

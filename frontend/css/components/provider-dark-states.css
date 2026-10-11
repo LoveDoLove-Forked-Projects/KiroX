@@ -10,11 +10,6 @@
   border-color: rgba(16, 185, 129, 0.4);
 }
 
-[data-theme='dark'] .moemail-add-section:hover {
-  border-color: rgba(16, 185, 129, 0.4);
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.08);
-}
-
 [data-theme='dark'] .moemail-config-item:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }

@@ -1,6 +1,7 @@
 /* @file 浅色主题与通用设计变量。 */
 
 :root {
+  color-scheme: light;
   --bg: linear-gradient(135deg, #eef2f7 0%, #e0e7ff 100%);
   --bg-card: rgba(255, 255, 255, 0.9);
   --bg-subtle: #f9fafb;
@@ -10,6 +11,12 @@
   --text-secondary: #6b7280;
   --text-muted: #9ca3af;
   --accent: #3b82f6;
+  --field-height: 40px;
+  --field-border: #d9e1ec;
+  --field-placeholder: #64748b;
+  --field-menu-bg: #ffffff;
+  --field-menu-shadow:
+    0 10px 28px -8px rgba(15, 23, 42, 0.18), 0 3px 8px -4px rgba(15, 23, 42, 0.1);
   --danger: #ef4444;
   --success: #22c55e;
   --radius: 16px;

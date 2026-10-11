@@ -28,7 +28,6 @@
 #ip-search.proxy-search {
   flex: 1;
   min-width: 180px;
-  height: 36px;
 }
 
 #ip-filter-status.proxy-filter {

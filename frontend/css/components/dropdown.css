@@ -1,84 +1,44 @@
-/* @file 下拉控件与邮箱提供商选项。 */
+/* @file 下拉触发器、箭头与邮箱提供商选项图标。 */
 
 .custom-dropdown {
   position: relative;
   width: 100%;
+  min-width: 0;
 }
 
 .dropdown-selected {
-  background: var(--bg-subtle);
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: 9px 12px;
-  border-radius: 10px;
-  font-size: 13px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-  transition: all 0.15s;
+  font-weight: 500;
 }
 
-.dropdown-selected:hover {
-  border-color: var(--accent);
-}
-
-.dropdown-selected.active {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
-  background: var(--bg-card);
+.dropdown-selected-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .dropdown-arrow {
-  width: 0;
-  height: 0;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 5px solid var(--text-muted);
-  margin-left: 4px;
-  transition: transform 0.2s;
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  margin: -3px 2px 0 6px;
+  color: var(--field-placeholder);
+  transform: rotate(45deg);
+  transition:
+    transform 0.16s ease,
+    color 0.16s ease;
 }
 
 .dropdown-selected.active .dropdown-arrow {
-  transform: rotate(180deg);
-  border-top-color: var(--accent);
-}
-
-.dropdown-options {
-  position: absolute;
-  top: calc(100% + 4px);
-  left: 0;
-  right: 0;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-  display: none;
-  overflow: hidden;
-  padding: 4px;
-}
-
-.dropdown-options.show {
-  display: block;
-}
-
-.dropdown-option {
-  padding: 8px 12px;
-  font-size: 13px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.1s;
-}
-
-.dropdown-option:hover {
-  background: var(--bg-subtle);
-}
-
-.dropdown-option.selected {
-  font-weight: 600;
-  background: var(--bg);
+  transform: translateY(3px) rotate(225deg);
+  color: var(--accent);
 }
 
 .email-provider-value,
@@ -101,4 +61,10 @@
 
 [data-theme='dark'] .email-provider-icon-mailnest {
   filter: brightness(0) invert(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dropdown-arrow {
+    transition: none;
+  }
 }

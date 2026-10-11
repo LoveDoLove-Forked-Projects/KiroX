@@ -1,0 +1,84 @@
+/* @file 输入框与下拉触发器的共享外观、交互和状态反馈。 */
+
+.form-input,
+.dropdown-selected {
+  min-width: 0;
+  min-height: var(--field-height);
+  padding: 9px 13px;
+  border: 1px solid var(--field-border);
+  border-radius: 8px;
+  /* 透出所在卡片的底色，避免半透明背景叠加造成色差。 */
+  background: transparent;
+  box-shadow: none;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  outline: none;
+  transition:
+    border-color 0.16s ease,
+    box-shadow 0.16s ease,
+    background-color 0.16s ease;
+}
+
+.form-input {
+  width: 100%;
+  caret-color: var(--accent);
+}
+
+.form-input::placeholder {
+  color: var(--field-placeholder);
+  font-weight: 400;
+  opacity: 1;
+}
+
+.form-input::selection {
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  color: var(--text);
+}
+
+.form-input[readonly] {
+  color: var(--text-secondary);
+  cursor: default;
+}
+
+.form-input:disabled,
+.dropdown-selected[aria-disabled='true'] {
+  border-color: var(--border);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* 仅根据显式错误状态着色，避免尚未填写的字段一开始就显示错误。 */
+.form-input[aria-invalid='true'] {
+  border-color: var(--danger);
+}
+
+.form-input[aria-invalid='true']:focus {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger) 18%, transparent);
+}
+
+.form-input[type='number'] {
+  font-variant-numeric: tabular-nums;
+}
+
+textarea.form-input {
+  min-height: 120px;
+  line-height: 1.65;
+  resize: vertical;
+}
+
+.form-group:focus-within > label,
+.settings-field:focus-within > span,
+.moemail-input-group:focus-within > label {
+  color: var(--text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form-input,
+  .dropdown-selected {
+    transition: none;
+  }
+}

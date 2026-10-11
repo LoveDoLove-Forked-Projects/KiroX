@@ -1,0 +1,112 @@
+/* @file 下拉菜单的浮层、选项状态、滚动条与展开动画。 */
+
+.dropdown-options {
+  --menu-enter-offset: -3px;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: none;
+  overflow: hidden;
+  padding: 5px;
+  border: 1px solid color-mix(in srgb, var(--text) 12%, var(--field-menu-bg));
+  border-radius: 8px;
+  background: var(--field-menu-bg);
+  box-shadow: var(--field-menu-shadow);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 400;
+  text-align: left;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--text) 20%, transparent) transparent;
+}
+
+.custom-dropdown[data-dropdown-placement='top'] .dropdown-options {
+  --menu-enter-offset: 3px;
+}
+
+.dropdown-options.show {
+  display: block;
+  animation: dropdown-menu-enter 0.14s ease-out;
+}
+
+.dropdown-option {
+  position: relative;
+  min-height: 34px;
+  padding: 7px 28px 7px 10px;
+  border-radius: 4px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  transition: background-color 0.12s ease;
+}
+
+.dropdown-option + .dropdown-option {
+  margin-top: 2px;
+}
+
+.dropdown-option:is(:hover, :focus-visible) {
+  background: color-mix(in srgb, var(--text) 4%, var(--field-menu-bg));
+  outline: none;
+}
+
+.dropdown-option.selected {
+  background: color-mix(in srgb, var(--text) 7%, var(--field-menu-bg));
+  font-weight: 500;
+}
+
+.dropdown-option.selected:is(:hover, :focus-visible) {
+  background: color-mix(in srgb, var(--text) 10%, var(--field-menu-bg));
+}
+
+.dropdown-option.selected::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 9px;
+  height: 5px;
+  border-left: 1.75px solid currentColor;
+  border-bottom: 1.75px solid currentColor;
+  transform: translateY(-70%) rotate(-45deg);
+}
+
+/* 菜单长列表保留细滚动条，覆盖应用框架隐藏滚动条的通用规则。 */
+.dropdown-options::-webkit-scrollbar {
+  display: block;
+  width: 5px;
+}
+
+.dropdown-options::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--text) 20%, transparent);
+}
+
+.dropdown-options::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@keyframes dropdown-menu-enter {
+  from {
+    opacity: 0;
+    transform: translateY(var(--menu-enter-offset));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dropdown-options.show {
+    animation: none;
+  }
+  .dropdown-option {
+    transition: none;
+  }
+}
