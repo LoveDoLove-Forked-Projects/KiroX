@@ -1,0 +1,22 @@
+/* @file 深色主题变量与页面背景。 */
+
+[data-theme='dark'] {
+  --bg: linear-gradient(135deg, #0f1117 0%, #151825 100%);
+  --bg-card: rgba(30, 32, 40, 0.9);
+  --bg-subtle: #1e2028;
+  --bg-hover: #282a34;
+  --border: rgba(255, 255, 255, 0.07);
+  --text: #e5e7eb;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --accent: #60a5fa;
+  --sidebar-bg: rgba(30, 32, 40, 0.95);
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  color-scheme: dark;
+}
+
+[data-theme='dark'] body {
+  background: linear-gradient(135deg, #0f1117 0%, #151825 100%);
+  color: #e5e7eb;
+}

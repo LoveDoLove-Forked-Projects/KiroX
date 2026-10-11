@@ -1,5 +1,12 @@
-const fs = require('fs');
-const path = require('path');
+/** @file 组合 HTML、合并 CSS，并复制浏览器模块与 Wails 静态资源。 */
+
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { renderHtml } from './tooling/html.js';
+import { bundleStyles } from './tooling/styles.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const distDir = path.join(__dirname, 'dist');
 
@@ -14,20 +21,21 @@ function copyDir(src, dest) {
   }
 }
 
+const html = renderHtml(path.join(__dirname, 'index.html'));
+const stylesheet = path.join(distDir, 'css', 'main.css');
+const styles = await bundleStyles(path.join(__dirname, 'css', 'main.css'), stylesheet);
+
 fs.rmSync(distDir, { recursive: true, force: true });
 fs.mkdirSync(distDir, { recursive: true });
-fs.copyFileSync(path.join(__dirname, 'index.html'), path.join(distDir, 'index.html'));
-copyDir(path.join(__dirname, 'css'), path.join(distDir, 'css'));
+fs.writeFileSync(path.join(distDir, 'index.html'), html);
+fs.mkdirSync(path.dirname(stylesheet), { recursive: true });
+fs.writeFileSync(stylesheet, styles);
 copyDir(path.join(__dirname, 'assets'), path.join(distDir, 'assets'));
 
 const fontsDir = path.join(__dirname, 'fonts');
 if (fs.existsSync(fontsDir)) copyDir(fontsDir, path.join(distDir, 'fonts'));
 
 const jsDir = path.join(__dirname, 'js');
-const distJsDir = path.join(distDir, 'js');
-fs.mkdirSync(distJsDir, { recursive: true });
-for (const file of fs.readdirSync(jsDir)) {
-  if (file.endsWith('.js')) fs.copyFileSync(path.join(jsDir, file), path.join(distJsDir, file));
-}
+copyDir(jsDir, path.join(distDir, 'js'));
 
 console.log('Build completed: frontend/dist/');

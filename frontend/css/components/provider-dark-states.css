@@ -1,0 +1,20 @@
+/* @file 域名和配置区域的深色主题状态。 */
+
+[data-theme='dark'] .domain-mode-btn.selected {
+  background: rgba(59, 130, 246, 0.12);
+}
+
+[data-theme='dark'] .domain-chip.selected {
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+[data-theme='dark'] .moemail-add-section:hover {
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.08);
+}
+
+[data-theme='dark'] .moemail-config-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}

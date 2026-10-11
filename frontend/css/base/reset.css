@@ -1,0 +1,18 @@
+/* @file 页面重置与基础排版。 */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family:
+    -apple-system, 'SF Pro SC', 'SF Pro Text', 'PingFang SC', 'Helvetica Neue', sans-serif;
+  background: linear-gradient(135deg, #eef2f7 0%, #e0e7ff 100%);
+  color: #1f2937;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}

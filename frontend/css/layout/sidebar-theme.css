@@ -1,0 +1,32 @@
+/* @file 侧栏深色主题状态。 */
+
+[data-theme='dark'] .sidebar {
+  background: var(--sidebar-bg);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme='dark'] .nav-item {
+  color: #6b7280;
+}
+
+[data-theme='dark'] .nav-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #9ca3af;
+}
+
+[data-theme='dark'] .nav-item.active {
+  background: rgba(96, 165, 250, 0.1);
+  color: #60a5fa;
+}
+
+[data-theme='dark'] .nav-item .nav-dot {
+  background: #60a5fa;
+}
+
+[data-theme='dark'] .nav-tooltip {
+  background: #374151;
+}
+
+[data-theme='dark'] .nav-divider {
+  background: rgba(255, 255, 255, 0.06);
+}

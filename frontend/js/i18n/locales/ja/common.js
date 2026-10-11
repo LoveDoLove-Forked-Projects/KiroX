@@ -1,0 +1,48 @@
+/** @file 日文界面文案：导航与通用操作。 */
+
+export default {
+  nav: {
+    overview: '概要',
+    logs: 'ログ',
+    accounts: 'メール',
+    about: '情報',
+    settings: '設定',
+    toggleTheme: 'テーマ切替',
+    checkUpdate: '更新確認',
+    language: '言語：日本語 (クリックで切替)',
+    ip: 'IP管理',
+  },
+  page: {
+    overview: '概要',
+    logs: 'ログ',
+    register: '登録',
+    accounts: 'メール',
+    settings: '設定',
+    ip: 'IP管理',
+    info: '情報',
+  },
+  common: {
+    loading: '読み込み中...',
+    loadFailed: '読み込み失敗',
+    noData: 'データなし',
+    cancel: 'キャンセル',
+    delete: '削除',
+    reset: 'リセット',
+    clearAll: 'すべてクリア',
+    select: '選択',
+    close: '閉じる',
+    test: 'テスト',
+    confirm: '確認',
+    prevPage: '前へ',
+    nextPage: '次へ',
+  },
+  status: {
+    success: '成功',
+    failed: '失敗',
+    unregistered: '未登録',
+    untested: '未テスト',
+    available: '利用可能',
+    unavailable: '利用不可',
+  },
+  logs: { title: 'ログ', copyLog: 'ログをコピー', empty: 'ログなし' },
+};

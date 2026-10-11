@@ -1,0 +1,189 @@
+/* @file 关于页面版本、更新与赞助区域布局。 */
+
+#page-info .about-product-heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+#page-info .about-logo-frame {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+#page-info .about-logo {
+  width: 56px;
+  height: 56px;
+  display: block;
+}
+
+#page-info .about-product-name {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+#info-version-detail.about-version-caption {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 3px;
+  font-family: var(--font-mono);
+}
+
+#page-info .about-product-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-left: auto;
+}
+
+#page-info .about-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 24px;
+}
+
+#page-info .about-version-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+#info-version-detail2.about-current-version {
+  font-weight: 600;
+  color: var(--text);
+  font-family: var(--font-mono);
+}
+
+#info-latest-version.about-latest-version {
+  font-weight: 600;
+  font-family: var(--font-mono);
+}
+
+#page-info .about-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  padding: 8px 0;
+}
+
+#info-release-date.about-release-date {
+  font-weight: 600;
+  color: var(--text);
+}
+
+#page-info .about-author-link {
+  margin-top: 0;
+  padding: 4px 8px;
+}
+
+#page-info .about-author-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+#info-update-banner.about-update-banner {
+  display: none;
+  margin-bottom: 20px;
+}
+
+#info-update-banner .about-update-card {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+#info-update-banner .about-update-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#info-update-banner .about-update-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+
+#info-update-banner .about-update-description {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 2px;
+}
+
+#info-update-banner .about-update-button {
+  background: #fff;
+  color: #6366f1;
+  font-weight: 700;
+  border: none;
+  flex-shrink: 0;
+}
+
+#page-info .about-feature-card {
+  padding: 0;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+#page-info .about-feature-heading {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#page-info .section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+#info-changelog-version.about-version-badge {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 3px 8px;
+  background: var(--bg-subtle);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+}
+
+#page-info .about-sponsor-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+#page-info .about-sponsor-description {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+#page-info .about-payment-options {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+#page-info .about-payment-image {
+  width: 140px;
+  height: 140px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}

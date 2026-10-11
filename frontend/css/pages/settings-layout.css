@@ -1,0 +1,13 @@
+/* @file 设置内容与目录控件布局。 */
+
+#page-settings .settings-content {
+  padding: 28px 32px 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+#page-settings .directory-controls {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}

@@ -1,0 +1,87 @@
+<!-- @file 设置分组：network。 -->
+<div class="card settings-card">
+  <div class="settings-group">
+    <div class="settings-group-title" data-i18n="settings.networkResilience">邮箱与容错</div>
+    <div class="settings-grid">
+      <div class="settings-field">
+        <span data-i18n="settings.emailProxyMode">邮箱取件网络</span>
+        <div
+          id="setting-email-proxy-mode"
+          class="custom-dropdown"
+          data-value="follow-task"
+          data-dropdown-action="syncEmailProxyField"
+        >
+          <div class="dropdown-selected" data-action="toggleDropdown">
+            <span class="dropdown-selected-text" data-i18n="settings.followTask">跟随任务代理</span
+            ><span class="dropdown-arrow"></span>
+          </div>
+          <div class="dropdown-options">
+            <div class="dropdown-option" data-value="direct" data-i18n="settings.direct">直连</div>
+            <div class="dropdown-option" data-value="follow-task" data-i18n="settings.followTask">
+              跟随任务代理
+            </div>
+            <div class="dropdown-option" data-value="custom" data-i18n="settings.customProxy">
+              自定义代理
+            </div>
+          </div>
+        </div>
+      </div>
+      <label class="settings-field"
+        ><span data-i18n="settings.emailProxy">邮箱自定义代理</span
+        ><input
+          id="setting-email-proxy"
+          class="form-input"
+          placeholder="socks5://127.0.0.1:1080"
+          type="text"
+      /></label>
+      <div class="settings-field">
+        <span data-i18n="settings.otpTimeout">验证码等待时间</span>
+        <div id="setting-otp-timeout" class="custom-dropdown" data-value="120">
+          <div class="dropdown-selected" data-action="toggleDropdown">
+            <span class="dropdown-selected-text">120 秒</span><span class="dropdown-arrow"></span>
+          </div>
+          <div class="dropdown-options">
+            <div class="dropdown-option" data-value="60">60 秒</div>
+            <div class="dropdown-option" data-value="120">120 秒</div>
+            <div class="dropdown-option" data-value="180">180 秒</div>
+            <div class="dropdown-option" data-value="300">300 秒</div>
+          </div>
+        </div>
+      </div>
+      <div class="settings-field">
+        <span data-i18n="settings.retryProfile">重试策略</span>
+        <div id="setting-retry-profile" class="custom-dropdown" data-value="standard">
+          <div class="dropdown-selected" data-action="toggleDropdown">
+            <span class="dropdown-selected-text" data-i18n="settings.retryStandard"
+              >标准（1 次）</span
+            ><span class="dropdown-arrow"></span>
+          </div>
+          <div class="dropdown-options">
+            <div class="dropdown-option" data-value="fast" data-i18n="settings.retryFast">
+              快速（不重试）
+            </div>
+            <div class="dropdown-option" data-value="standard" data-i18n="settings.retryStandard">
+              标准（1 次）
+            </div>
+            <div class="dropdown-option" data-value="stable" data-i18n="settings.retryStable">
+              稳定（2 次）
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="settings-item settings-inline-item">
+      <div>
+        <div class="settings-item-title" data-i18n="settings.stopOnRisk">
+          风控错误时停止整批任务
+        </div>
+        <div class="settings-item-desc" data-i18n="settings.stopOnRiskDesc">
+          避免继续消耗邮箱和代理额度
+        </div>
+      </div>
+      <label class="toggle-switch"
+        ><input type="checkbox" id="setting-stop-on-risk" /><span class="toggle-slider"></span
+      ></label>
+    </div>
+  </div>
+</div>

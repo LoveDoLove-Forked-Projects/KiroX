@@ -1,0 +1,23 @@
+/* @file 浅色主题与通用设计变量。 */
+
+:root {
+  --bg: linear-gradient(135deg, #eef2f7 0%, #e0e7ff 100%);
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --bg-subtle: #f9fafb;
+  --bg-hover: #f3f4f6;
+  --border: rgba(0, 0, 0, 0.06);
+  --text: #1f2937;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --accent: #3b82f6;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --radius: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --font-mono: 'JetBrains Mono', 'Cascadia Code', 'SF Mono', 'Consolas', monospace;
+  --sidebar-width: 64px;
+  --sidebar-bg: #ffffff;
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}

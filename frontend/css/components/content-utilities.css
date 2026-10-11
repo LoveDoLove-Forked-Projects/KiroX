@@ -1,0 +1,124 @@
+/* @file 页面与弹窗共享的文字、间距、标题和紧凑控件。 */
+
+#update-modal .text-secondary,
+#page-info .text-secondary {
+  color: var(--text-secondary);
+}
+
+#btn-update-later.button-fill,
+#btn-update-now.button-fill,
+#confirm-modal .button-fill,
+#btn-start.button-fill,
+#btn-stop.button-fill,
+#ntm-start.button-fill {
+  flex: 1;
+  justify-content: center;
+}
+
+#new-task-modal.foreground-overlay,
+#ip-form-modal.foreground-overlay,
+#ip-result-modal.foreground-overlay {
+  z-index: 1200;
+}
+
+#ntm-modal-content.dialog-compact,
+#ip-result-modal .dialog-compact {
+  max-width: 420px;
+}
+
+#ntm-modal-content .dialog-heading,
+#ip-form-modal .dialog-heading,
+#ip-result-modal .dialog-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+#ntm-modal-content .content-heading,
+#page-accounts .content-heading,
+#add-icloud-modal .content-heading,
+#add-outlook-modal .content-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#ntm-modal-content .dialog-title,
+#page-ip .dialog-title,
+#ip-form-title.dialog-title,
+#ip-result-modal .dialog-title,
+#add-icloud-modal .dialog-title,
+#add-outlook-modal .dialog-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+#cfg-count.input-compact,
+#cfg-concurrency.input-compact,
+#cfg-delay.input-compact,
+#ip-form-host.input-compact,
+#ip-form-port.input-compact,
+#ip-form-user.input-compact,
+#ip-form-pass.input-compact {
+  height: 38px;
+}
+
+#ntm-modal-content .field-last,
+#moemail-config-select .field-last,
+#cloudmail-config-select .field-last,
+#ip-form-single .field-last {
+  margin-bottom: 0;
+}
+
+#page-info .content-narrow,
+#page-accounts .content-narrow {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#page-info .section-spacing,
+#page-ip .section-spacing,
+#add-icloud-modal .section-spacing,
+#add-outlook-modal .section-spacing {
+  margin-bottom: 20px;
+}
+
+#page-info .text-caption,
+#add-icloud-modal .text-caption,
+#add-outlook-modal .text-caption {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+#info-banner-version.text-mono {
+  font-family: var(--font-mono);
+}
+
+#info-changelog .text-muted {
+  color: var(--text-muted);
+}
+
+#page-info .text-center {
+  text-align: center;
+}
+
+#btn-start .button-leading-icon,
+#page-logs .button-leading-icon {
+  margin-right: 4px;
+}
+
+#page-info .feedback-caption,
+#ip-batch-status.feedback-caption {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+#cfg-data-dir.field-grow,
+#cfg-result-output-dir.field-grow,
+#page-accounts .field-grow,
+#add-icloud-modal .field-grow,
+#add-outlook-modal .field-grow {
+  flex: 1;
+}

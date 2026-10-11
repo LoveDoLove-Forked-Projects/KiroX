@@ -1,10 +1,30 @@
 {
   "name": "kirox",
   "version": "1.0.4",
+  "type": "module",
   "scripts": {
     "dev": "node build.js",
     "build": "node build.js",
-    "test": "node --test tests/settings.test.js"
+    "test": "node tests/run.js",
+    "lint": "npm run lint:js && npm run lint:html && npm run lint:css",
+    "lint:js": "eslint js tests tooling build.js eslint.config.js stylelint.config.js",
+    "lint:html": "node tooling/check-markup.js",
+    "lint:css": "stylelint \"css/**/*.css\"",
+    "lint:fix": "npm run lint:js -- --fix && npm run lint:css -- --fix && npm run lint:html",
+    "format": "prettier --write index.html html css js tests tooling build.js eslint.config.js stylelint.config.js package.json .prettierrc.json README.md",
+    "format:check": "prettier --check index.html html css js tests tooling build.js eslint.config.js stylelint.config.js package.json .prettierrc.json README.md",
+    "check": "npm run lint && npm run format:check && npm test && npm run build"
   },
-  "dependencies": {}
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "eslint": "^9.39.4",
+    "globals": "^16.5.0",
+    "html-validate": "^10.9.0",
+    "jsdom": "^26.1.0",
+    "postcss": "^8.5.29",
+    "postcss-import": "^16.2.0",
+    "prettier": "^3.9.10",
+    "stylelint": "^16.26.1",
+    "stylelint-config-recommended": "^16.0.0"
+  }
 }

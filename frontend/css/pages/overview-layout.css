@@ -1,0 +1,40 @@
+/* @file 概览页面的统计与任务区域布局。 */
+
+#page-overview .overview-stats {
+  grid-template-columns: 1fr 1fr;
+}
+
+#page-overview .overview-provider-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  flex-shrink: 0;
+}
+
+#page-overview .icon-fixed {
+  flex-shrink: 0;
+}
+
+#page-overview .overview-task-body {
+  flex-direction: column;
+}
+
+#page-overview .overview-task-actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+#page-overview .overview-status-card {
+  flex: none;
+}
+
+#st-progress.text-semibold {
+  font-weight: 600;
+}
+
+#page-overview .overview-status-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 16px;
+}

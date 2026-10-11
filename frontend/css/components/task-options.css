@@ -1,0 +1,24 @@
+/* @file 任务邮箱选项区域的展开动画。 */
+
+.ntm-options {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin-left: 0;
+  transition:
+    max-width 0.28s ease,
+    opacity 0.28s ease,
+    margin-left 0.28s ease;
+}
+
+.ntm-options.show {
+  max-width: 50%;
+  opacity: 1;
+  margin-left: 16px;
+}
+
+.modal-content::-webkit-scrollbar {
+  display: none;
+}

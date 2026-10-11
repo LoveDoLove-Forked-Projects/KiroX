@@ -1,0 +1,27 @@
+/* @file 桌面标题栏。 */
+
+.app-titlebar {
+  position: fixed;
+  top: 0;
+  left: var(--sidebar-width);
+  right: 0;
+  height: 38px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  --wails-draggable: drag;
+  z-index: 100;
+}
+
+.app-titlebar-text {
+  position: absolute;
+  left: calc(50% - var(--sidebar-width) / 2);
+  transform: translateX(-50%);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: -0.3px;
+  pointer-events: none;
+}

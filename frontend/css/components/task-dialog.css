@@ -1,0 +1,75 @@
+/* @file 任务创建弹窗的表单布局。 */
+
+#ntm-modal-content .task-provider-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+}
+
+#ntm-modal-content .task-dialog-columns {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+#ntm-modal-content .field-column {
+  flex: 1;
+  min-width: 0;
+}
+
+#ntm-modal-content .field-spacing {
+  margin-bottom: 12px;
+}
+
+#ntm-modal-content .field-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  display: block;
+}
+
+#moemail-config-select .domain-field-label,
+#cloudmail-config-select .domain-field-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#moemail-config-select .domain-heading,
+#cloudmail-config-select .domain-heading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#moemail-config-select .moemail-domain-icon {
+  color: #8b5cf6;
+}
+
+#cfg-moemail-domains-list .domain-feedback,
+#cfg-cloudmail-domains-list .domain-feedback {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 12px;
+  padding: 12px;
+}
+
+#moemail-config-select .domain-help {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+#cloudmail-config-select .cloudmail-domain-icon {
+  color: #0ea5e9;
+}
+
+#ntm-modal-content .dialog-actions {
+  display: flex;
+  gap: 10px;
+}

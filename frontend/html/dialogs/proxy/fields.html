@@ -1,0 +1,44 @@
+<!-- @file 代理地址与凭据字段。 -->
+<div id="ip-form-single" class="proxy-form-grid">
+  <div class="form-group field-last">
+    <label data-i18n="ip.protocol" class="proxy-field-label">协议</label>
+    <div class="custom-dropdown" id="ip-form-protocol" data-dropdown-action="">
+      <div class="dropdown-selected" data-action="toggleDropdown">
+        <span class="dropdown-selected-text">http</span>
+        <span class="dropdown-arrow"></span>
+      </div>
+      <div class="dropdown-options">
+        <div class="dropdown-option" data-value="http">http</div>
+        <div class="dropdown-option" data-value="https">https</div>
+        <div class="dropdown-option" data-value="socks5">socks5</div>
+        <div class="dropdown-option" data-value="socks5h">socks5h</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group field-last">
+    <label data-i18n="ip.host" class="proxy-field-label" for="ip-form-host">主机</label
+    ><input
+      id="ip-form-host"
+      class="form-input input-compact"
+      placeholder="host / IPv4 / IPv6"
+      type="text"
+    />
+  </div>
+  <div class="form-group field-last">
+    <label data-i18n="ip.port" class="proxy-field-label" for="ip-form-port">端口</label
+    ><input id="ip-form-port" type="number" class="form-input input-compact" value="8080" />
+  </div>
+  <div class="form-group field-last">
+    <label data-i18n="ip.username" class="proxy-field-label" for="ip-form-user">用户名</label
+    ><input id="ip-form-user" class="form-input input-compact" type="text" />
+  </div>
+  <div class="form-group field-last">
+    <label data-i18n="ip.password" class="proxy-field-label" for="ip-form-pass">密码</label
+    ><input
+      id="ip-form-pass"
+      type="password"
+      class="form-input input-compact"
+      autocomplete="current-password"
+    />
+  </div>
+</div>

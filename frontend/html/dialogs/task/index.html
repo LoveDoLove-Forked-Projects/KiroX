@@ -1,0 +1,46 @@
+<!-- @file 新建任务弹窗。 -->
+<div id="new-task-modal" class="modal-overlay foreground-overlay">
+  <div class="modal-content dialog-compact" id="ntm-modal-content">
+    <div class="dialog-heading">
+      <div class="content-heading">
+        <img src="assets/kiro.svg" class="task-provider-icon" alt="" />
+        <h3 data-i18n="register.newTask" class="dialog-title">新建注册任务</h3>
+      </div>
+      <button
+        type="button"
+        class="modal-close-btn"
+        data-action="closeNewTaskModal"
+        aria-label="关闭"
+        title="关闭"
+        data-i18n-title="common.close"
+        data-i18n-aria-label="common.close"
+      >
+        ×
+      </button>
+    </div>
+
+    <div class="task-dialog-columns">
+      <!-- @include ./fields.html -->
+
+      <!-- @include ./domain-options.html -->
+    </div>
+
+    <div class="dialog-actions">
+      <button id="ntm-start" data-action="startTask" class="btn btn-dark button-fill" type="button">
+        <svg
+          viewBox="0 0 24 24"
+          width="14"
+          height="14"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+        <span data-i18n="register.startBtn">开始注册</span>
+      </button>
+    </div>
+  </div>
+</div>

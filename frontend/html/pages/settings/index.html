@@ -1,0 +1,59 @@
+<!-- @file 设置页面。 -->
+<div class="page" id="page-settings">
+  <div class="page-scroll settings-content">
+    <div class="settings-page-header">
+      <div>
+        <div class="settings-page-title" data-i18n="settings.title">设置</div>
+        <div class="settings-page-subtitle" data-i18n="settings.subtitle">配置通知与运行策略</div>
+      </div>
+      <button
+        type="button"
+        id="settings-save-button"
+        class="btn btn-dark"
+        data-action="saveAppSettings"
+        data-i18n="settings.save"
+        disabled
+      >
+        保存设置
+      </button>
+    </div>
+
+    <button
+      type="button"
+      id="settings-floating-save"
+      class="settings-floating-save"
+      data-action="saveAppSettings"
+      aria-label="保存设置"
+      title="保存设置"
+      data-i18n-aria-label="settings.save"
+      data-i18n-title="settings.save"
+      disabled
+    >
+      <svg
+        viewBox="0 0 24 24"
+        width="19"
+        height="19"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"></path>
+        <path d="M17 21v-8H7v8"></path>
+        <path d="M7 3v5h8"></path>
+      </svg>
+    </button>
+
+    <!-- @include ./network.html -->
+
+    <!-- @include ./general.html -->
+
+    <!-- @include ./notifications.html -->
+
+    <!-- @include ./appearance.html -->
+
+    <!-- @include ./maintenance.html -->
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<!-- @file 任务中的 MoeMail 域名选项。 -->
+<div id="moemail-config-select" class="initially-hidden">
+  <div class="form-group field-last">
+    <div class="domain-field-label">
+      <div class="domain-heading">
+        <svg
+          viewBox="0 0 24 24"
+          width="14"
+          height="14"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="moemail-domain-icon"
+        >
+          <circle cx="12" cy="12" r="10"></circle>
+          <path
+            d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"
+          ></path>
+        </svg>
+        <span data-i18n="register.selectDomain">选择域名</span>
+      </div>
+      <button
+        type="button"
+        data-action="selectAllMoeMailDomains"
+        class="moemail-select-all-btn"
+        data-i18n="register.selectAllDomain"
+      >
+        全选域名
+      </button>
+    </div>
+    <div id="cfg-moemail-domains-list" class="moemail-domains-container">
+      <div data-i18n="common.loading" class="domain-feedback">加载中...</div>
+    </div>
+    <div data-i18n="register.domainHint" class="domain-help">邮箱名将自动生成随机字符串</div>
+  </div>
+</div>

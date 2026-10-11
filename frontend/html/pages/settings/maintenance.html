@@ -1,0 +1,61 @@
+<!-- @file 设置分组：maintenance。 -->
+<div class="card settings-card">
+  <div class="settings-group">
+    <div class="settings-group-title" data-i18n="settings.maintenance">维护</div>
+    <div class="settings-grid">
+      <label class="settings-field"
+        ><span data-i18n="settings.logRetention">日志保留天数</span
+        ><input id="setting-log-retention" class="form-input" type="number" min="1" max="90"
+      /></label>
+      <label class="settings-field"
+        ><span data-i18n="settings.moeExpiry">MoeMail 有效期（分钟）</span
+        ><input id="setting-moe-expiry" class="form-input" type="number" min="10" max="1440"
+      /></label>
+    </div>
+    <div class="settings-item settings-inline-item">
+      <div>
+        <div class="settings-item-title" data-i18n="settings.persistentLogs">持久化运行日志</div>
+        <div class="settings-item-desc" data-i18n="settings.persistentLogsDesc">
+          落盘前自动遮蔽验证码与令牌
+        </div>
+      </div>
+      <label class="toggle-switch"
+        ><input type="checkbox" id="setting-persistent-logs" /><span class="toggle-slider"></span
+      ></label>
+    </div>
+    <div class="settings-item settings-inline-item">
+      <div>
+        <div class="settings-item-title" data-i18n="settings.autoProbe">
+          进入 IP 管理时探测新代理
+        </div>
+      </div>
+      <label class="toggle-switch"
+        ><input type="checkbox" id="setting-auto-probe" /><span class="toggle-slider"></span
+      ></label>
+    </div>
+    <div class="settings-maintenance-actions">
+      <button
+        class="btn btn-secondary btn-sm"
+        data-action="openLogsDirectory"
+        data-i18n="settings.openLogs"
+        type="button"
+      >
+        打开日志目录</button
+      ><button
+        class="btn btn-secondary btn-sm"
+        data-action="clearPersistentLogs"
+        data-i18n="settings.clearLogs"
+        type="button"
+      >
+        清理日志</button
+      ><button
+        class="btn btn-secondary btn-sm"
+        data-action="clearFingerprintCache"
+        data-i18n="settings.clearFingerprint"
+        type="button"
+      >
+        清理指纹缓存
+      </button>
+    </div>
+  </div>
+</div>

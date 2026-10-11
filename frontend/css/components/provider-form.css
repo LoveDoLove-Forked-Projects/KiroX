@@ -1,0 +1,84 @@
+/* @file 邮箱提供商配置输入与操作区。 */
+
+.moemail-add-section {
+  margin-top: 16px;
+  padding: 16px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.2s;
+}
+
+.moemail-add-section:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.05);
+}
+
+.moemail-add-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.moemail-add-header svg {
+  color: #10b981;
+}
+
+.moemail-add-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.moemail-input-row {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.moemail-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.moemail-input-group label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.moemail-input-group .form-input {
+  height: 36px;
+  font-size: 13px;
+}
+
+.moemail-action-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.moemail-action-row .btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.moemail-status-text {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-left: 4px;
+  line-height: 1.4;
+  flex: 1;
+}

@@ -1,0 +1,236 @@
+/* @file 设置分组、保存按钮与音量控件。 */
+
+.settings-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.settings-page-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.settings-page-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.settings-floating-save {
+  position: fixed;
+  right: 32px;
+  bottom: 28px;
+  z-index: 190;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: #111827;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.24);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    visibility 0.18s ease,
+    background 0.15s ease;
+}
+
+.settings-floating-save.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.settings-floating-save:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  outline-offset: 3px;
+}
+
+.settings-floating-save:disabled {
+  background: var(--bg-hover);
+  color: var(--text-muted);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+[data-theme='dark'] .settings-floating-save {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.settings-floating-save:hover:not(:disabled) {
+  background: #1f2937;
+}
+
+[data-theme='dark'] .settings-floating-save:hover:not(:disabled) {
+  background: #f3f4f6;
+}
+
+.settings-card {
+  margin-bottom: 16px;
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 16px;
+}
+
+.settings-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.settings-field .dropdown-selected {
+  min-height: 38px;
+  box-sizing: border-box;
+  font-weight: 500;
+}
+
+.settings-inline-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.settings-inline-item > div:first-child {
+  min-width: 0;
+}
+
+.settings-range-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.settings-range-row input {
+  flex: 1;
+}
+
+.settings-volume-range {
+  --range-progress: 70%;
+  appearance: none;
+  height: 6px;
+  margin: 8px 0;
+  border: 0;
+  border-radius: 999px;
+  outline: none;
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0 var(--range-progress),
+    var(--border) var(--range-progress) 100%
+  );
+  cursor: pointer;
+}
+
+.settings-volume-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 3px solid var(--bg-card);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 42%, var(--border)),
+    0 2px 5px rgba(15, 23, 42, 0.18);
+}
+
+.settings-volume-range:focus-visible::-webkit-slider-thumb {
+  box-shadow:
+    0 0 0 1px var(--accent),
+    0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.settings-range-row output {
+  width: 46px;
+  text-align: right;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.settings-maintenance-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 18px;
+}
+
+@media (max-width: 680px) {
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+  .settings-page-header {
+    align-items: flex-start;
+  }
+}
+
+.settings-group {
+  margin-bottom: 0;
+}
+
+.settings-group-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.settings-item {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.settings-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.settings-item-main {
+  margin-bottom: 12px;
+}
+
+.settings-item-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.settings-item-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.settings-item-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}

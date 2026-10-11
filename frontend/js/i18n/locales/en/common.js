@@ -1,0 +1,48 @@
+/** @file 英文界面文案：导航与通用操作。 */
+
+export default {
+  nav: {
+    overview: 'Overview',
+    logs: 'Logs',
+    accounts: 'Emails',
+    about: 'About',
+    settings: 'Settings',
+    toggleTheme: 'Toggle theme',
+    checkUpdate: 'Check update',
+    language: 'Language: English (click to switch)',
+    ip: 'IPs',
+  },
+  page: {
+    overview: 'Overview',
+    logs: 'Logs',
+    register: 'Register',
+    accounts: 'Emails',
+    settings: 'Settings',
+    ip: 'IPs',
+    info: 'About',
+  },
+  common: {
+    loading: 'Loading...',
+    loadFailed: 'Failed to load',
+    noData: 'No data',
+    cancel: 'Cancel',
+    delete: 'Delete',
+    reset: 'Reset',
+    clearAll: 'Clear all',
+    select: 'Select',
+    close: 'Close',
+    test: 'Test',
+    confirm: 'Confirm',
+    prevPage: 'Prev',
+    nextPage: 'Next',
+  },
+  status: {
+    success: 'Success',
+    failed: 'Failed',
+    unregistered: 'Unregistered',
+    untested: 'Untested',
+    available: 'Available',
+    unavailable: 'Unavailable',
+  },
+  logs: { title: 'Logs', copyLog: 'Copy logs', empty: 'No logs' },
+};

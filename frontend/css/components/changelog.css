@@ -1,0 +1,69 @@
+/* @file 更新说明的标题、列表与正文。 */
+
+#info-changelog {
+  padding: 20px;
+  min-height: 120px;
+}
+
+.cl-h2 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 16px 0 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.cl-h2:first-child {
+  margin-top: 0;
+}
+
+.cl-h3 {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 12px 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.cl-list {
+  margin: 0 0 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.cl-list li {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  padding: 2px 0 2px 16px;
+  position: relative;
+}
+
+.cl-list li::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 10px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--primary, #6366f1);
+}
+
+.cl-p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 4px 0;
+}
+
+#page-info .changelog-code,
+#update-modal .changelog-code {
+  background: var(--bg-subtle);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}

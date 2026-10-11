@@ -1,0 +1,31 @@
+/* @file 代理检测状态徽标与国家图标。 */
+
+#page-ip .ip-badge-success,
+#ip-result-modal .ip-badge-success {
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+}
+
+#page-ip .ip-badge-error,
+#ip-result-modal .ip-badge-error {
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+#page-ip .ip-country-flag,
+#ip-result-modal .ip-country-flag {
+  width: 18px;
+  height: 13px;
+  border-radius: 2px;
+  vertical-align: -2px;
+  object-fit: cover;
+  display: inline-block;
+}

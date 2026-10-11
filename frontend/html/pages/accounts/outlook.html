@@ -1,0 +1,85 @@
+<!-- @file 邮箱配置与列表：outlook。 -->
+<div class="card outlook-list-card">
+  <div class="settings-group-title account-list-heading">
+    <div class="content-heading">
+      <img src="assets/outlook.svg" alt="" class="account-provider-icon" />
+      <span data-i18n="accounts.outlookTitle">微软邮箱</span>
+      <span class="account-count-badge"
+        ><span data-i18n="accounts.count">共</span> <span id="outlook-count">0</span>
+        <span data-i18n="accounts.countUnit">个</span></span
+      >
+    </div>
+    <div class="compact-actions">
+      <button data-action="openAddOutlookModal" class="btn btn-dark btn-sm" type="button">
+        <svg
+          viewBox="0 0 24 24"
+          width="13"
+          height="13"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M12 5v14M5 12h14"></path>
+        </svg>
+        <span data-i18n="accounts.addAccount">添加账号</span>
+      </button>
+      <button
+        data-action="clearRegisteredOutlookAccounts"
+        class="btn btn-secondary btn-sm"
+        data-i18n="accounts.clearRegistered"
+        type="button"
+      >
+        清除已注册
+      </button>
+      <button
+        data-action="clearAllOutlookAccounts"
+        class="btn btn-danger btn-sm"
+        data-i18n="common.clearAll"
+        type="button"
+      >
+        清空全部
+      </button>
+    </div>
+  </div>
+  <div class="account-list-scroll">
+    <table class="table-fill">
+      <thead>
+        <tr>
+          <th data-i18n="accounts.thIndex" class="account-index-column">#</th>
+          <th data-i18n="accounts.thEmail" class="account-email-column">邮箱地址</th>
+          <th data-i18n="accounts.thStatus" class="account-status-column">状态</th>
+          <th data-i18n="accounts.thAddedAt" class="account-time-column">添加时间</th>
+          <th data-i18n="accounts.thActions" class="account-actions-column">操作</th>
+        </tr>
+      </thead>
+      <tbody id="parsed-outlook-body"></tbody>
+    </table>
+  </div>
+  <div id="outlook-pager" class="account-pager">
+    <span id="outlook-pager-info"></span>
+    <div class="compact-actions">
+      <button
+        data-action="changeOutlookPage"
+        data-value="-1"
+        id="outlook-pager-prev"
+        class="btn btn-secondary btn-sm"
+        data-i18n="common.prevPage"
+        type="button"
+      >
+        上一页
+      </button>
+      <button
+        data-action="changeOutlookPage"
+        data-value="1"
+        id="outlook-pager-next"
+        class="btn btn-secondary btn-sm"
+        data-i18n="common.nextPage"
+        type="button"
+      >
+        下一页
+      </button>
+    </div>
+  </div>
+</div>

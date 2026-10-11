@@ -1,0 +1,43 @@
+/* @file 日志页面容器与操作区域布局。 */
+
+#page-logs.logs-page {
+  height: calc(100vh - 48px);
+  overflow: hidden;
+}
+
+#page-logs .logs-content {
+  padding: 20px 24px;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+#page-logs .logs-fill {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#page-logs .content-toolbar,
+#page-accounts .content-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#page-logs .text-bold {
+  font-weight: 700;
+}
+
+#page-logs .logs-copy-button {
+  font-size: 11px;
+  padding: 3px 10px;
+}
+
+#unified-log-box.logs-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}

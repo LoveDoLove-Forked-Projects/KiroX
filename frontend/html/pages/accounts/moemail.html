@@ -1,0 +1,106 @@
+<!-- @file 邮箱配置与列表：moemail。 -->
+<div class="card provider-config-card">
+  <div class="settings-group">
+    <div class="settings-group-title content-toolbar">
+      <div class="content-heading">
+        <img class="email-provider-icon" src="assets/moemail.svg" alt="" />
+        <span data-i18n="accounts.moemailTitle">MoeMail 临时邮箱</span>
+      </div>
+      <span id="settings-moemail-summary" data-i18n="moemail.summaryNone" class="provider-summary"
+        >未配置</span
+      >
+    </div>
+    <div class="moemail-add-section">
+      <div class="moemail-add-header">
+        <svg
+          viewBox="0 0 24 24"
+          width="14"
+          height="14"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M12 5v14M5 12h14"></path>
+        </svg>
+        <span data-i18n="accounts.addConfig">添加新配置</span>
+      </div>
+      <div class="moemail-add-body">
+        <div class="moemail-input-row">
+          <div class="moemail-input-group field-grow">
+            <label for="moemail-inline-name"
+              ><span data-i18n="accounts.configName">名称</span>
+              <span data-i18n="accounts.optional" class="field-optional">(可选)</span></label
+            >
+            <input
+              type="text"
+              id="moemail-inline-name"
+              placeholder="自动生成"
+              data-i18n-placeholder="accounts.configNamePlaceholder"
+              class="form-input"
+            />
+          </div>
+          <div class="moemail-input-group field-wide">
+            <label data-i18n="accounts.apiUrl" for="moemail-inline-url">API URL</label>
+            <input
+              type="text"
+              id="moemail-inline-url"
+              placeholder="https://moemail.app"
+              class="form-input"
+            />
+          </div>
+          <div class="moemail-input-group field-wide">
+            <label data-i18n="accounts.apiKey" for="moemail-inline-apikey">API Key</label>
+            <input
+              type="text"
+              id="moemail-inline-apikey"
+              placeholder="YOUR_API_KEY"
+              class="form-input"
+            />
+          </div>
+        </div>
+        <div class="moemail-action-row">
+          <button
+            data-action="inlineTestMoeMail"
+            class="btn btn-secondary btn-sm"
+            id="moemail-inline-test-btn"
+            type="button"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <span data-i18n="accounts.testConnection">测试连接</span>
+          </button>
+          <button data-action="inlineAddMoeMail" class="btn btn-dark btn-sm" type="button">
+            <svg
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 5v14M5 12h14"></path>
+            </svg>
+            <span data-i18n="accounts.addConfigBtn">添加配置</span>
+          </button>
+          <span id="moemail-inline-status" class="moemail-status-text"></span>
+        </div>
+      </div>
+    </div>
+    <div id="moemail-inline-list" class="moemail-config-list"></div>
+  </div>
+</div>

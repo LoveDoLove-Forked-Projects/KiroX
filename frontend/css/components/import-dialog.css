@@ -1,0 +1,84 @@
+/* @file 邮箱导入弹窗的布局与输入样式。 */
+
+#add-icloud-modal .import-dialog,
+#add-outlook-modal .import-dialog {
+  max-width: 520px;
+}
+
+#add-icloud-modal .import-dialog-heading,
+#add-outlook-modal .import-dialog-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#add-icloud-modal .import-provider-icon,
+#add-outlook-modal .import-provider-icon {
+  width: 22px;
+  height: 22px;
+}
+
+#add-icloud-modal .import-file-section,
+#add-outlook-modal .import-file-section {
+  margin-bottom: 16px;
+}
+
+#add-icloud-modal .import-section-label,
+#add-outlook-modal .import-section-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+#add-icloud-modal .import-divider,
+#add-outlook-modal .import-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+#add-icloud-modal .import-divider-line,
+#add-outlook-modal .import-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+#add-icloud-modal .import-divider-label,
+#add-outlook-modal .import-divider-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+#add-icloud-modal .import-input-label,
+#add-outlook-modal .import-input-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+#add-icloud-modal .import-format-help,
+#add-outlook-modal .import-format-help {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+#cfg-icloud-data.import-input,
+#cfg-outlook-data.import-input {
+  resize: vertical;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+#add-icloud-modal .import-dialog-actions,
+#add-outlook-modal .import-dialog-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}

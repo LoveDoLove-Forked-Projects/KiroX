@@ -1,0 +1,30 @@
+/* @file 邮箱列表的状态、时间与操作列。 */
+
+#page-accounts .account-row-time {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+#page-accounts .account-row-actions {
+  text-align: right;
+}
+
+#page-accounts .account-row-empty {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 20px;
+}
+
+#page-accounts .account-row-status {
+  font-weight: 600;
+}
+#page-accounts .account-row-status--success {
+  color: var(--success);
+}
+#page-accounts .account-row-status--failed {
+  color: var(--danger);
+}
+#page-accounts .account-row-status--pending {
+  color: var(--text-muted);
+}

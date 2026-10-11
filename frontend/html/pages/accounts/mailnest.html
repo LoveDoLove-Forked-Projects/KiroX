@@ -1,0 +1,98 @@
+<!-- @file 邮箱配置与列表：mailnest。 -->
+<div class="card provider-config-card">
+  <div class="settings-group">
+    <div class="settings-group-title content-toolbar">
+      <div class="content-heading">
+        <img
+          class="email-provider-icon email-provider-icon-mailnest"
+          src="assets/mailnest.svg"
+          alt=""
+        />
+        <span data-i18n="accounts.mailnestTitle">MailNest 临时邮箱</span>
+      </div>
+      <span id="settings-mailnest-summary" data-i18n="mailnest.summaryNone" class="provider-summary"
+        >未配置</span
+      >
+    </div>
+    <div class="moemail-add-section">
+      <div class="moemail-add-header">
+        <svg
+          viewBox="0 0 24 24"
+          width="14"
+          height="14"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M12 5v14M5 12h14"></path>
+        </svg>
+        <span data-i18n="accounts.addConfig">添加新配置</span>
+      </div>
+      <div class="moemail-add-body">
+        <div class="moemail-input-row">
+          <div class="moemail-input-group field-wide">
+            <label data-i18n="accounts.apiKey" for="mailnest-inline-apikey">API Key</label>
+            <input
+              type="text"
+              id="mailnest-inline-apikey"
+              placeholder="YOUR_API_KEY"
+              class="form-input"
+            />
+          </div>
+          <div class="moemail-input-group field-wide">
+            <label data-i18n="accounts.projectCode" for="mailnest-inline-project-code"
+              >项目代码</label
+            >
+            <input
+              type="text"
+              id="mailnest-inline-project-code"
+              placeholder="aws001"
+              class="form-input"
+            />
+          </div>
+        </div>
+        <div class="moemail-action-row">
+          <button
+            data-action="inlineTestMailNest"
+            class="btn btn-secondary btn-sm"
+            id="mailnest-inline-test-btn"
+            type="button"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <span data-i18n="accounts.testConnection">测试连接</span>
+          </button>
+          <button data-action="inlineAddMailNest" class="btn btn-dark btn-sm" type="button">
+            <svg
+              viewBox="0 0 24 24"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 5v14M5 12h14"></path>
+            </svg>
+            <span data-i18n="accounts.addConfigBtn">添加配置</span>
+          </button>
+          <span id="mailnest-inline-status" class="moemail-status-text"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

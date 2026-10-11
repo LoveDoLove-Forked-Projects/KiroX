@@ -1,0 +1,37 @@
+<!-- @file 可用版本更新提示。 -->
+<div id="info-update-banner" class="about-update-banner">
+  <div class="about-update-card">
+    <div class="about-update-heading">
+      <svg
+        viewBox="0 0 24 24"
+        width="20"
+        height="20"
+        fill="none"
+        stroke="#fff"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M21 12a9 9 0 11-6.22-8.56"></path>
+        <path d="M21 3v6h-6"></path>
+      </svg>
+      <div>
+        <div class="about-update-title">
+          <span data-i18n="about.newVersionFound">发现新版本</span>
+          <span id="info-banner-version" class="text-mono"></span>
+        </div>
+        <div data-i18n="about.clickToUpdate" class="about-update-description">
+          前往 Releases 页面下载最新版本
+        </div>
+      </div>
+    </div>
+    <button
+      data-action="checkUpdateManually"
+      class="btn btn-sm about-update-button"
+      data-i18n="about.updateNow"
+      type="button"
+    >
+      查看版本
+    </button>
+  </div>
+</div>

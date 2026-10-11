@@ -1,0 +1,30 @@
+/* @file 应用内容布局与页面显隐。 */
+
+.app-layout {
+  margin-left: calc(var(--sidebar-width) + 32px);
+  margin-right: 16px;
+  margin-top: 38px;
+  height: calc(100vh - 38px);
+  display: flex;
+  flex-direction: column;
+}
+
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  background: transparent;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+.page-scroll {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 32px;
+}

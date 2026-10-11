@@ -1,0 +1,51 @@
+<!-- @file 任务数量、并发、间隔与网络字段。 -->
+<div class="field-column">
+  <div class="form-group field-spacing">
+    <label data-i18n="register.count" class="field-label" for="cfg-count">注册数量</label>
+    <input type="number" id="cfg-count" value="1" min="1" class="form-input input-compact" />
+  </div>
+  <div class="form-group field-spacing">
+    <label data-i18n="register.concurrency" class="field-label" for="cfg-concurrency">并发数</label>
+    <input
+      type="number"
+      id="cfg-concurrency"
+      value="1"
+      min="1"
+      max="10"
+      class="form-input input-compact"
+    />
+  </div>
+  <div class="form-group field-spacing">
+    <label data-i18n="register.delay" class="field-label" for="cfg-delay">延迟 (秒)</label>
+    <input type="number" id="cfg-delay" value="1" min="0" class="form-input input-compact" />
+  </div>
+  <div class="form-group field-spacing">
+    <label data-i18n="ip.proxy" class="field-label">代理</label>
+    <div class="custom-dropdown" id="cfg-proxy-select">
+      <div class="dropdown-selected" data-action="toggleDropdown">
+        <span class="dropdown-selected-text" data-i18n="ip.direct">直连</span>
+        <span class="dropdown-arrow"></span>
+      </div>
+      <div class="dropdown-options" id="cfg-proxy-select-options"></div>
+    </div>
+  </div>
+  <div class="form-group field-last">
+    <label data-i18n="register.emailProvider" class="field-label">邮箱提供商</label>
+    <div
+      class="custom-dropdown"
+      id="cfg-email-provider"
+      data-dropdown-action="selectEmailProvider"
+      data-rich-options=""
+      data-dropdown-placement="top"
+    >
+      <div class="dropdown-selected" data-action="toggleDropdown">
+        <span class="dropdown-selected-text email-provider-value">
+          <img class="email-provider-icon" src="assets/outlook.svg" alt="" />
+          <span data-dropdown-label="" data-i18n="register.outlook">微软邮箱</span>
+        </span>
+        <span class="dropdown-arrow"></span>
+      </div>
+      <!-- @include ./provider-options.html -->
+    </div>
+  </div>
+</div>

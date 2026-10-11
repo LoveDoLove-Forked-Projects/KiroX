@@ -1,0 +1,68 @@
+<!-- @file 代理创建和编辑弹窗。 -->
+<div id="ip-form-modal" class="modal-overlay foreground-overlay">
+  <div class="modal-content proxy-dialog">
+    <div class="dialog-heading">
+      <h3 id="ip-form-title" data-i18n="ip.addTitle" class="dialog-title">添加代理</h3>
+      <button
+        type="button"
+        class="modal-close-btn"
+        data-action="closeIpFormModal"
+        aria-label="关闭"
+        title="关闭"
+        data-i18n-title="common.close"
+        data-i18n-aria-label="common.close"
+      >
+        ×
+      </button>
+    </div>
+
+    <div class="proxy-form-tabs">
+      <button
+        type="button"
+        id="ip-tab-single"
+        class="btn btn-dark btn-sm"
+        data-action="switchIpFormTab"
+        data-value="single"
+        data-i18n="ip.tabSingle"
+      >
+        单个添加
+      </button>
+      <button
+        type="button"
+        id="ip-tab-batch"
+        class="btn btn-secondary btn-sm"
+        data-action="switchIpFormTab"
+        data-value="batch"
+        data-i18n="ip.tabBatch"
+      >
+        批量添加
+      </button>
+    </div>
+
+    <!-- @include ./fields.html -->
+
+    <div id="ip-form-batch" class="initially-hidden">
+      <textarea
+        id="ip-form-batch-text"
+        class="form-input proxy-batch-input"
+        placeholder="每行一个代理，格式：scheme://[user:pass@]host:port"
+        data-i18n-placeholder="ip.batchPlaceholder"
+      ></textarea>
+      <div id="ip-batch-status" class="feedback-caption"></div>
+    </div>
+
+    <div class="dialog-footer">
+      <button
+        type="button"
+        data-action="closeIpFormModal"
+        class="btn btn-secondary"
+        data-i18n="common.cancel"
+      >
+        取消
+      </button>
+      <button type="button" data-action="submitIpForm" class="btn btn-dark" data-i18n="ip.save">
+        保存
+      </button>
+    </div>
+  </div>
+</div>

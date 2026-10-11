@@ -1,0 +1,90 @@
+/* @file 代理页面与编辑弹窗布局。 */
+
+#page-ip .proxy-content {
+  padding: 28px 32px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+#page-ip .proxy-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+#page-ip .toolbar-trailing-action {
+  margin-left: auto;
+}
+
+#page-ip .proxy-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#ip-search.proxy-search {
+  flex: 1;
+  min-width: 180px;
+  height: 36px;
+}
+
+#ip-filter-status.proxy-filter {
+  width: 110px;
+}
+
+#page-ip .text-danger {
+  color: var(--danger);
+}
+
+#page-ip .horizontal-scroll {
+  overflow-x: auto;
+}
+
+#ip-empty.proxy-empty {
+  display: none;
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px 0;
+  font-size: 13px;
+}
+
+#ip-form-modal .proxy-dialog {
+  max-width: 640px;
+}
+
+#ip-form-modal .proxy-form-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+#ip-form-single.proxy-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+#ip-form-single .proxy-field-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+#ip-form-batch-text.proxy-batch-input {
+  height: 140px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  resize: vertical;
+}
+
+#ip-form-modal .dialog-footer {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}

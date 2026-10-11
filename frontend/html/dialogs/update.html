@@ -1,0 +1,48 @@
+<!-- @file 版本更新弹窗。 -->
+<div id="update-modal" class="modal-overlay">
+  <div class="update-dialog">
+    <div class="card update-dialog-card">
+      <div class="update-dialog-heading">
+        <div data-i18n="modal.updateTitle" class="update-dialog-title">发现新版本</div>
+      </div>
+      <div class="update-dialog-versions">
+        <div class="update-version-row">
+          <span data-i18n="about.currentVersion" class="text-secondary">当前版本</span>
+          <span id="update-current-version" class="version-value">-</span>
+        </div>
+        <div class="update-version-row">
+          <span data-i18n="about.latestVersion" class="text-secondary">最新版本</span>
+          <span id="update-latest-version" class="version-highlight">-</span>
+        </div>
+        <div class="release-date-row">
+          <span data-i18n="about.releaseDate" class="text-secondary">发布日期</span>
+          <span id="update-release-date" class="version-value">-</span>
+        </div>
+      </div>
+      <div class="update-dialog-notes">
+        <div data-i18n="about.updateContent" class="update-notes-label">更新内容</div>
+        <div id="update-changelog" class="update-notes-content">-</div>
+      </div>
+      <div class="btn-row dialog-actions-no-drag">
+        <button
+          data-action="closeUpdateModal"
+          id="btn-update-later"
+          class="btn btn-secondary button-fill"
+          data-i18n="modal.updateLater"
+          type="button"
+        >
+          稍后
+        </button>
+        <button
+          data-action="openReleasePage"
+          id="btn-update-now"
+          class="btn btn-dark button-fill"
+          data-i18n="modal.updateDownload"
+          type="button"
+        >
+          前往下载
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

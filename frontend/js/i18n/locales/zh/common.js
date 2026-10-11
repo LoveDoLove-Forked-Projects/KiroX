@@ -1,0 +1,48 @@
+/** @file 简体中文界面文案：导航与通用操作。 */
+
+export default {
+  nav: {
+    overview: '概览',
+    logs: '运行日志',
+    accounts: '邮箱池',
+    about: '关于',
+    settings: '设置',
+    toggleTheme: '切换主题',
+    checkUpdate: '检查更新',
+    language: '语言：中文 (点击切换)',
+    ip: 'IP 管理',
+  },
+  page: {
+    overview: '概览',
+    logs: '运行日志',
+    register: '注册',
+    accounts: '邮箱池',
+    settings: '设置',
+    ip: 'IP 管理',
+    info: '关于',
+  },
+  common: {
+    loading: '加载中...',
+    loadFailed: '加载失败',
+    noData: '暂无数据',
+    cancel: '取消',
+    delete: '删除',
+    reset: '重置',
+    clearAll: '清空全部',
+    select: '选择',
+    close: '关闭',
+    test: '测试',
+    confirm: '确认',
+    prevPage: '上一页',
+    nextPage: '下一页',
+  },
+  status: {
+    success: '成功',
+    failed: '失败',
+    unregistered: '未注册',
+    untested: '未测试',
+    available: '可用',
+    unavailable: '不可用',
+  },
+  logs: { title: '运行日志', copyLog: '复制日志', empty: '暂无日志' },
+};

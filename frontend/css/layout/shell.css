@@ -1,0 +1,39 @@
+/* @file 应用容器、主题图标与窗口控件。 */
+
+#main-container.main-container {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#theme-icon-light.initially-hidden,
+#theme-icon-dark.initially-hidden,
+#moemail-config-select.initially-hidden,
+#cloudmail-config-select.initially-hidden,
+#ip-form-batch.initially-hidden {
+  display: none;
+}
+
+#nav-language-label.language-flag {
+  width: 22px;
+  height: auto;
+  border-radius: 3px;
+  display: block;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+#main-container .window-maximize {
+  background: #28c840;
+}
+
+#main-container .window-minimize {
+  background: #febc2e;
+}
+
+#main-container .window-close {
+  background: #ff5f57;
+}

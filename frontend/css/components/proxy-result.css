@@ -1,0 +1,59 @@
+/* @file 代理检测结果的键值行与加载占位。 */
+
+#page-ip .ip-result-row,
+#ip-result-modal .ip-result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+#page-ip .ip-result-label,
+#ip-result-modal .ip-result-label {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+#page-ip .ip-result-value,
+#ip-result-modal .ip-result-value {
+  font-weight: 600;
+  text-align: right;
+  word-break: break-all;
+}
+
+#page-ip .ip-result-mono,
+#ip-result-modal .ip-result-mono {
+  font-family: var(--font-mono);
+}
+
+#page-ip .ip-result-placeholder-wide,
+#ip-result-modal .ip-result-placeholder-wide {
+  width: 70%;
+}
+
+#page-ip .ip-result-placeholder-type,
+#ip-result-modal .ip-result-placeholder-type {
+  width: 60px;
+}
+
+#page-ip .ip-result-summary,
+#ip-result-modal .ip-result-summary {
+  margin-bottom: 12px;
+}
+
+#page-ip .ip-result-placeholder-title,
+#ip-result-modal .ip-result-placeholder-title {
+  width: 110px;
+  height: 16px;
+}
+
+#page-ip .ip-result-actions,
+#ip-result-modal .ip-result-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}

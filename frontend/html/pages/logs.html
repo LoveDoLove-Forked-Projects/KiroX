@@ -1,0 +1,32 @@
+<!-- @file 运行日志页面。 -->
+<div class="page logs-page" id="page-logs">
+  <div class="logs-content">
+    <div class="logs-panel logs-fill">
+      <div class="logs-panel-header content-toolbar">
+        <span data-i18n="logs.title" class="text-bold">运行日志</span>
+        <button
+          data-action="copyLogs"
+          class="btn btn-secondary btn-sm logs-copy-button"
+          type="button"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="12"
+            height="12"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="button-leading-icon"
+          >
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <span data-i18n="logs.copyLog">复制日志</span>
+        </button>
+      </div>
+      <div id="unified-log-box" class="log-box logs-scroll"></div>
+    </div>
+  </div>
+</div>

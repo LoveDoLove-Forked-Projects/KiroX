@@ -1,0 +1,23 @@
+/* @file 作者链接与头像。 */
+
+.author-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+
+.author-row:hover {
+  background: var(--bg-hover);
+}
+
+.author-row img {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}

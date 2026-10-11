@@ -1,0 +1,8 @@
+/* @file 各业务区域的危险操作文字颜色。 */
+
+#page-accounts .text-danger,
+#page-ip .text-danger,
+#ip-result-modal .text-danger,
+#new-task-modal .text-danger {
+  color: var(--danger);
+}

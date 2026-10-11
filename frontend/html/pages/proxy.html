@@ -1,0 +1,76 @@
+<!-- @file 代理管理页面。 -->
+<div class="page" id="page-ip">
+  <div class="page-scroll proxy-content">
+    <div class="card section-spacing">
+      <div class="proxy-heading">
+        <h3 data-i18n="page.ip" class="dialog-title">IP 管理</h3>
+        <button
+          type="button"
+          data-action="openIpFormModal"
+          class="btn btn-dark btn-sm toolbar-trailing-action"
+          data-i18n="ip.add"
+        >
+          + 添加代理
+        </button>
+      </div>
+      <div class="proxy-toolbar">
+        <input
+          type="text"
+          id="ip-search"
+          placeholder="搜索出口 IP / 地址 / 国家"
+          class="form-input proxy-search"
+          data-input-action="onIpSearch"
+          data-i18n-placeholder="ip.searchPlaceholder"
+        />
+        <div
+          class="custom-dropdown proxy-filter"
+          id="ip-filter-status"
+          data-dropdown-action="onIpFilterStatus"
+        >
+          <div class="dropdown-selected" data-action="toggleDropdown">
+            <span class="dropdown-selected-text" data-i18n="ip.allStatus">全部状态</span>
+            <span class="dropdown-arrow"></span>
+          </div>
+          <div class="dropdown-options">
+            <div class="dropdown-option" data-value="" data-i18n="ip.allStatus">全部状态</div>
+            <div class="dropdown-option" data-value="enabled" data-i18n="ip.enabled">启用</div>
+            <div class="dropdown-option" data-value="disabled" data-i18n="ip.disabled">停用</div>
+          </div>
+        </div>
+        <button
+          type="button"
+          data-action="loadIpList"
+          class="btn btn-secondary btn-sm"
+          data-i18n="ip.refresh"
+        >
+          刷新
+        </button>
+        <button
+          type="button"
+          data-action="batchTestIp"
+          class="btn btn-secondary btn-sm"
+          data-i18n="ip.batchTest"
+        >
+          批量测试
+        </button>
+        <button
+          type="button"
+          data-action="batchDeleteIp"
+          class="btn btn-secondary btn-sm text-danger"
+          data-i18n="ip.batchDelete"
+        >
+          批量删除
+        </button>
+      </div>
+    </div>
+
+    <div class="card horizontal-scroll">
+      <div id="ip-list"></div>
+      <div id="ip-empty" data-i18n="ip.empty" class="proxy-empty">暂无代理，点击右上角添加。</div>
+    </div>
+  </div>
+
+  <!-- @include ../dialogs/proxy/form.html -->
+
+  <!-- @include ../dialogs/proxy/result.html -->
+</div>

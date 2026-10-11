@@ -1,0 +1,126 @@
+/* @file 邮箱提供商配置与账号列表布局。 */
+
+#page-accounts .provider-config-card {
+  flex-shrink: 0;
+  margin-bottom: 20px;
+}
+
+#settings-moemail-summary.provider-summary,
+#settings-cloudmail-summary.provider-summary,
+#settings-mailnest-summary.provider-summary {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 4px 10px;
+  background: var(--bg-subtle);
+  border-radius: 6px;
+}
+
+#page-accounts .field-optional {
+  font-weight: 400;
+  color: var(--text-muted);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+#page-accounts .field-wide {
+  flex: 2;
+}
+
+#page-accounts .provider-domain-help {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+#page-accounts .outlook-list-card {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 420px;
+}
+
+#page-accounts .account-list-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+#page-accounts .account-provider-icon {
+  width: 18px;
+  height: 18px;
+}
+
+#page-accounts .account-count-badge {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 3px 8px;
+  background: var(--bg-subtle);
+  border-radius: 6px;
+}
+
+#page-accounts .compact-actions,
+#outlook-pager .compact-actions {
+  display: flex;
+  gap: 8px;
+}
+
+#page-accounts .account-list-scroll {
+  flex: 1;
+  overflow-x: auto;
+  min-height: 0;
+}
+
+#page-accounts .table-fill {
+  width: 100%;
+}
+
+#page-accounts .account-index-column {
+  width: 40px;
+  padding: 10px 16px;
+}
+
+#page-accounts .account-email-column {
+  padding: 10px 8px;
+}
+
+#page-accounts .account-status-column {
+  width: 80px;
+  padding: 10px 8px;
+}
+
+#page-accounts .account-time-column {
+  width: 120px;
+  padding: 10px 8px;
+}
+
+#page-accounts .account-actions-column {
+  width: 60px;
+  padding: 10px 16px;
+  text-align: right;
+}
+
+#outlook-pager.account-pager {
+  display: none;
+  padding: 12px 16px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+#page-accounts .icloud-list-card {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 260px;
+}

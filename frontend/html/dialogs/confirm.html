@@ -1,0 +1,45 @@
+<!-- @file 操作确认弹窗。 -->
+<div id="confirm-modal" class="modal-overlay confirm-overlay">
+  <div class="confirm-dialog">
+    <div class="card dialog-card-padding">
+      <div class="confirm-dialog-heading">
+        <div class="confirm-dialog-icon">
+          <svg
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            fill="none"
+            stroke="#ef4444"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </div>
+        <div id="confirm-title" class="confirm-dialog-title"></div>
+        <div id="confirm-message" class="confirm-dialog-message"></div>
+      </div>
+      <div class="btn-row">
+        <button
+          data-action="closeConfirmModal"
+          class="btn btn-secondary button-fill"
+          data-i18n="common.cancel"
+          type="button"
+        >
+          取消
+        </button>
+        <button
+          id="confirm-action-btn"
+          data-action="confirmAction"
+          class="btn btn-primary confirm-button"
+          type="button"
+        >
+          确认
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

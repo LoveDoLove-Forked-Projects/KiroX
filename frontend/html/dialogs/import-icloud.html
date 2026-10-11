@@ -1,0 +1,83 @@
+<!-- @file iCloud 邮箱导入弹窗。 -->
+<div id="add-icloud-modal" class="modal-overlay">
+  <div class="modal-content import-dialog">
+    <div class="import-dialog-heading">
+      <div class="content-heading">
+        <img src="assets/icloud.svg" alt="" class="import-provider-icon" />
+        <h3 data-i18n="accounts.icloudAddTitle" class="dialog-title">添加 iCloud 邮箱账号</h3>
+      </div>
+      <button
+        type="button"
+        class="modal-close-btn"
+        data-action="closeAddICloudModal"
+        aria-label="关闭"
+        title="关闭"
+        data-i18n-title="common.close"
+        data-i18n-aria-label="common.close"
+      >
+        ×
+      </button>
+    </div>
+
+    <div class="import-file-section">
+      <div data-i18n="accounts.importFile" class="import-section-label">导入文件</div>
+      <div class="content-heading">
+        <button data-action="importICloudFile" class="btn btn-secondary field-grow" type="button">
+          <svg
+            viewBox="0 0 24 24"
+            width="14"
+            height="14"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+          <span data-i18n="accounts.selectTxt">选择 TXT 文件</span>
+        </button>
+        <span data-i18n="accounts.icloudPerLine" class="text-caption">每行一个账号</span>
+      </div>
+    </div>
+
+    <div class="import-divider">
+      <div class="import-divider-line"></div>
+      <span data-i18n="accounts.orManual" class="import-divider-label">或手动输入</span>
+      <div class="import-divider-line"></div>
+    </div>
+
+    <div class="section-spacing">
+      <div data-i18n="accounts.icloudManualInput" class="import-input-label">手动输入</div>
+      <div data-i18n="accounts.icloudFormat" class="import-format-help">
+        格式：邮箱----iCloud 消息列表 URL，每行一个
+      </div>
+      <textarea
+        id="cfg-icloud-data"
+        class="form-input import-input"
+        rows="6"
+        placeholder="user@icloud.com----https://apple55.top/messages/xxx/user@icloud.com"
+      ></textarea>
+    </div>
+    <div class="import-dialog-actions">
+      <button
+        data-action="closeAddICloudModal"
+        class="btn btn-secondary"
+        data-i18n="common.cancel"
+        type="button"
+      >
+        取消
+      </button>
+      <button
+        data-action="addICloudAccounts"
+        class="btn btn-dark"
+        data-i18n="accounts.addToList"
+        type="button"
+      >
+        添加到列表
+      </button>
+    </div>
+  </div>
+</div>

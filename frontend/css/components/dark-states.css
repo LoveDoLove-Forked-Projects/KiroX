@@ -1,0 +1,32 @@
+/* @file 通用组件的深色主题状态。 */
+
+[data-theme='dark'] .btn-primary {
+  background: #e5e5e5;
+  color: #111;
+}
+
+[data-theme='dark'] .btn-primary:hover:not(:disabled) {
+  background: #fff;
+}
+
+[data-theme='dark'] .btn-danger {
+  color: #fff;
+}
+
+[data-theme='dark'] .form-input:focus {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06);
+}
+
+[data-theme='dark'] .dropdown-selected.active {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06);
+}
+
+[data-theme='dark'] .modal-content {
+  background: var(--bg-card);
+}
+
+[data-theme='dark'] .log-box {
+  background: #080a0f;
+  border-color: rgba(255, 255, 255, 0.05);
+  color: rgba(226, 232, 240, 0.85);
+}

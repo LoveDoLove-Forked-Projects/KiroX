@@ -1,0 +1,149 @@
+/* @file 更新与确认弹窗的内容布局。 */
+
+#update-modal .update-dialog {
+  width: 100%;
+  max-width: 500px;
+  padding: 24px;
+  max-height: 90vh;
+  display: flex;
+}
+
+#update-modal .update-dialog-card {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1;
+}
+
+#update-modal .update-dialog-heading {
+  text-align: center;
+  margin-bottom: 24px;
+  --wails-draggable: drag;
+  cursor: move;
+  flex-shrink: 0;
+}
+
+#update-modal .update-dialog-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+#update-modal .update-dialog-versions {
+  margin-bottom: 16px;
+  --wails-draggable: no-drag;
+  flex-shrink: 0;
+}
+
+#update-modal .update-version-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+
+#update-current-version.version-value,
+#update-release-date.version-value {
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+#update-latest-version.version-highlight {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--accent);
+}
+
+#update-modal .release-date-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+#update-modal .update-dialog-notes {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  --wails-draggable: no-drag;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#update-modal .update-notes-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+#update-changelog.update-notes-content {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text);
+  white-space: pre-wrap;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+#update-modal .dialog-actions-no-drag {
+  --wails-draggable: no-drag;
+  flex-shrink: 0;
+}
+
+#confirm-modal.confirm-overlay {
+  z-index: 1100;
+}
+
+#confirm-modal .confirm-dialog {
+  width: 100%;
+  max-width: 400px;
+  padding: 24px;
+}
+
+#confirm-modal .dialog-card-padding {
+  padding: 32px;
+}
+
+#confirm-modal .confirm-dialog-heading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#confirm-modal .confirm-dialog-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #fef2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+#confirm-title.confirm-dialog-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+#confirm-message.confirm-dialog-message {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+#confirm-action-btn.confirm-button {
+  flex: 1;
+  justify-content: center;
+  background: var(--danger);
+}
