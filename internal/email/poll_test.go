@@ -127,7 +127,7 @@ func emailCodeWaiter(kind string, ctx context.Context, transport http.RoundTripp
 	case "cloudmail":
 		provider := &CloudMailProvider{client: newCloudMailClient(ctx, CloudMailConfig{URL: "https://mail.test"})}
 		provider.client.client = client
-		provider.client.token = "test-token"
+		provider.client.auth.token = "test-token"
 		return provider.WaitForCode
 	default:
 		provider := NewMailNestProviderContextWithProxy(ctx, MailNestConfig{}, "")

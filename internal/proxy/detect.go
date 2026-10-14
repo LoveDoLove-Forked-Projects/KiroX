@@ -3,7 +3,6 @@ package proxy
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"io"
 	"strings"
 	"time"
@@ -38,7 +37,7 @@ func classifyProxyType(hosting, mobile bool) string {
 	return "residential"
 }
 
-// Detect 通过给定代理访问 ipinfo.io，返回出口 IP 和归属信息。
+// Detect 通过给定代理访问 ip-api.com，返回出口 IP 和归属信息。
 func Detect(proxyURL string) Info {
 	proxyURL = strings.TrimSpace(proxyURL)
 	if proxyURL == "" {
@@ -56,7 +55,13 @@ func Detect(proxyURL string) Info {
 	result := make(chan Info, 1)
 	go func() {
 		client := httputil.NewTLSClient(proxyURL, true)
-		req, _ := fhttp.NewRequest("GET", "http://ip-api.com/json/?lang=zh-CN&fields=status,message,country,countryCode,regionName,city,isp,hosting,mobile,query", nil)
+		defer client.CloseIdleConnections()
+		// tls-client 的 SetProxy 失败时可能静默回退，禁止把直连结果当作代理检测结果。
+		if client.GetProxy() != proxyURL {
+			result <- Info{Scheme: scheme, Error: "代理配置无效，请检查协议、主机和端口"}
+			return
+		}
+		req, _ := fhttp.NewRequestWithContext(ctx, "GET", "http://ip-api.com/json/?lang=zh-CN&fields=status,message,country,countryCode,regionName,city,isp,hosting,mobile,query", nil)
 		req.Header.Set("User-Agent", "kirox/proxy-check")
 		resp, err := client.Do(req)
 		if err != nil {
@@ -64,14 +69,18 @@ func Detect(proxyURL string) Info {
 			return
 		}
 		defer resp.Body.Close()
-		body, _ := io.ReadAll(resp.Body)
 		if resp.StatusCode != 200 {
-			result <- Info{Scheme: scheme, Error: fmt.Sprintf("HTTP %d", resp.StatusCode)}
+			result <- Info{Scheme: scheme, Error: proxyProbeHTTPError(resp.StatusCode)}
+			return
+		}
+		body, err := io.ReadAll(resp.Body)
+		if err != nil {
+			result <- Info{Scheme: scheme, Error: "读取检测响应失败: " + simplifyProxyErr(err.Error())}
 			return
 		}
 		var data struct {
 			Status, Message, Country, CountryCode, RegionName, City, ISP, Query string
-			Hosting, Mobile bool
+			Hosting, Mobile                                                     bool
 		}
 		if err := json.Unmarshal(body, &data); err != nil {
 			result <- Info{Scheme: scheme, Error: "解析响应失败"}
@@ -104,23 +113,4 @@ func Detect(proxyURL string) Info {
 	case <-ctx.Done():
 		return Info{Scheme: scheme, Error: "检测超时"}
 	}
-}
-
-func simplifyProxyErr(s string) string {
-	switch {
-	case strings.Contains(s, "connection refused"):
-		return "连接被拒绝"
-	case strings.Contains(s, "timeout"), strings.Contains(s, "deadline"):
-		return "连接超时"
-	case strings.Contains(s, "no such host"):
-		return "域名解析失败"
-	case strings.Contains(s, "socks"):
-		return "SOCKS 协商失败"
-	case strings.Contains(s, "proxy"):
-		return "代理握手失败"
-	}
-	if len(s) > 80 {
-		s = s[:80] + "..."
-	}
-	return s
 }
