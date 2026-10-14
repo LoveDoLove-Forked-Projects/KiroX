@@ -52,6 +52,19 @@ It is suitable for Kiro, AI Coding, browser automation, and overseas network acc
 Free trial supported. Exclusive discount code: <code>0205</code>
 </p>
 
+<p align="center">
+  <a href="https://www.rapidproxy.io/?ref=KiroX" target="_blank">
+    <img src="docs/rapidproxy.png" alt="RapidProxy rotating residential proxies from $0.55/GB and static residential IPs at $5/IP/month" width="800">
+  </a>
+</p>
+
+<p align="left">
+<b><a href="https://www.rapidproxy.io/?ref=KiroX" target="_blank">RapidProxy</a></b> provides high-performance proxy IP services for developers and businesses, with 90 million+ residential IPs across 200+ countries and regions, smart rotation, precise geotargeting, and high-concurrency connections.<br>
+Rotating residential proxies start at $0.55/GB, static residential IPs cost $5/IP/month, and rotating residential traffic never expires.<br>
+Suitable for web scraping, AI data collection, SEO monitoring, and e-commerce analytics, with HTTP/HTTPS/SOCKS5 support.<br>
+Use discount code <code>RAPID10</code> for <b>10% off</b> and start your free trial today.
+</p>
+
 ---
 
 ## Features

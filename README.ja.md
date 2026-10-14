@@ -52,6 +52,19 @@ Kiro、AI コーディング、ブラウザ自動化、海外ネットワーク�
 無料トライアル対応。専用割引コード：<code>0205</code>
 </p>
 
+<p align="center">
+  <a href="https://www.rapidproxy.io/?ref=KiroX" target="_blank">
+    <img src="docs/rapidproxy.png" alt="RapidProxy ローテーション型レジデンシャルプロキシは $0.55/GB から、固定レジデンシャル IP は $5/IP/月" width="800">
+  </a>
+</p>
+
+<p align="left">
+<b><a href="https://www.rapidproxy.io/?ref=KiroX" target="_blank">RapidProxy</a></b> は開発者と企業向けに高性能なプロキシ IP サービスを提供し、世界 200 以上の国・地域をカバーする 9,000 万以上のレジデンシャル IP を保有しています。スマートローテーション、精密な地域指定、高い同時接続数に対応しています。<br>
+ローテーション型レジデンシャルプロキシは $0.55/GB から、固定レジデンシャル IP は $5/IP/月。ローテーション型レジデンシャルプロキシのデータ通信量に有効期限はありません。<br>
+Web スクレイピング、AI 向けデータ収集、SEO モニタリング、EC 分析に幅広く利用でき、HTTP/HTTPS/SOCKS5 に対応しています。<br>
+割引コード <code>RAPID10</code> で <b>10% オフ</b>。今すぐ無料トライアルをお試しください。
+</p>
+
 ---
 
 ## 機能
