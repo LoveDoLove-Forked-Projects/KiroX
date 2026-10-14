@@ -2,7 +2,6 @@ package email
 
 import (
 	"context"
-	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -58,11 +57,7 @@ func NewMailNestClient(config MailNestConfig) *MailNestClient {
 }
 
 func newMailNestClient(ctx context.Context, config MailNestConfig) *MailNestClient {
-	tr := &http.Transport{
-		TLSClientConfig: &tls.Config{
-			InsecureSkipVerify: true,
-		},
-	}
+	tr := &http.Transport{}
 	return &MailNestClient{
 		ctx:    ctx,
 		config: config,
@@ -101,8 +96,7 @@ func (c *MailNestClient) GetBalance() (*MailNestBalanceData, error) {
 	defer resp.Body.Close()
 
 	if resp.StatusCode != 200 {
-		body, _ := io.ReadAll(resp.Body)
-		return nil, fmt.Errorf("获取余额失败 %d: %s", resp.StatusCode, string(body))
+		return nil, fmt.Errorf("获取余额失败 (HTTP %d)", resp.StatusCode)
 	}
 
 	body, err := io.ReadAll(resp.Body)
@@ -112,7 +106,16 @@ func (c *MailNestClient) GetBalance() (*MailNestBalanceData, error) {
 
 	var balance MailNestResponse[MailNestBalanceData]
 	if err := json.Unmarshal(body, &balance); err != nil {
-		return nil, fmt.Errorf("解析响应失败: %w, 响应内容: %s", err, string(body))
+		return nil, fmt.Errorf("解析余额响应失败: %w", err)
+	}
+	if balance.Code != "00000" {
+		if balance.Code == "" {
+			return nil, fmt.Errorf("获取余额失败: 服务未返回业务状态码")
+		}
+		return nil, fmt.Errorf("获取余额失败 (MailNest code=%s)", balance.Code)
+	}
+	if strings.TrimSpace(balance.Data.Balance) == "" {
+		return nil, fmt.Errorf("获取余额失败: 服务未返回余额")
 	}
 	return &balance.Data, nil
 }

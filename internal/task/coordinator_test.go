@@ -136,6 +136,9 @@ func TestCaptchaFailureDoesNotRestartRegistration(t *testing.T) {
 	for _, errorMsg := range []string{
 		"CAPTCHA_REQUIRED: verification required",
 		"设置密码失败: CAPTCHA/风控验证",
+		"设置密码失败: 服务要求人工验证 (CAPTCHA) (AUTHENTICATION_FAILED)",
+		"设置密码失败: 响应包含 CAPTCHA 验证信息 (AUTHENTICATION_FAILED)",
+		"manual captcha verification required",
 	} {
 		t.Run(errorMsg, func(t *testing.T) {
 			if got := classifyError(errorMsg); got != "captcha" {
@@ -154,11 +157,23 @@ func TestCaptchaFailureDoesNotRestartRegistration(t *testing.T) {
 func TestAWSRiskErrorsStillTriggerBatchKillSwitch(t *testing.T) {
 	for _, errorMsg := range []string{
 		"send-otp 失败 (400)",
+		"发送验证码失败: 验证码未确认发送 (HTTP 400, requestId=test-id)",
 		"注册被拦截: BLOCKED",
 		"AWS 请求失败: IP或浏览器指纹被检测",
 	} {
 		if !isKillSwitchError(errorMsg) {
 			t.Fatalf("AWS risk error did not trigger batch kill switch: %s", errorMsg)
+		}
+	}
+}
+
+func TestOtherSendOTPStatusesDoNotMasqueradeAsHTTP400(t *testing.T) {
+	for _, message := range []string{
+		"发送验证码失败: 验证码未确认发送 (HTTP 503, requestId=test-id)",
+		"接收验证码失败: 邮箱服务异常 (HTTP 400)",
+	} {
+		if isKillSwitchError(message) {
+			t.Fatalf("incorrect HTTP 400 classification: %s", message)
 		}
 	}
 }

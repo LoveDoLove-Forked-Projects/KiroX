@@ -1,109 +1,79 @@
 /** @file MailNest 连接配置、测试结果与摘要展示。 */
 
 import { getAppApi } from '../platform/wails.js';
-
 import { tr } from '../i18n/index.js';
 import { clearLocalizedStatus, setInlineTestButton, setLocalizedStatus } from '../ui/status.js';
 import { showToast } from '../ui/toast.js';
 
 const mailnestState = {
   config: {},
+  busy: false,
 };
 
-export async function inlineTestMailNest() {
-  const apiKey = document.getElementById('mailnest-inline-apikey').value.trim();
-  const projectCode = document.getElementById('mailnest-inline-project-code').value.trim();
-  if (!projectCode || !apiKey) {
+function setMailNestBusy(busy) {
+  mailnestState.busy = busy;
+  setInlineTestButton(document.getElementById('mailnest-inline-test-btn'), busy, 'moemail.testing');
+  document.querySelector('[data-action="inlineAddMailNest"]').disabled = busy;
+  document.getElementById('mailnest-inline-apikey').disabled = busy;
+  document.getElementById('mailnest-inline-project-code').disabled = busy;
+}
+
+async function runMailNestAction(save) {
+  if (mailnestState.busy) return;
+  const config = {
+    apiKey: document.getElementById('mailnest-inline-apikey').value.trim(),
+    projectCode: document.getElementById('mailnest-inline-project-code').value.trim(),
+  };
+  if (!config.projectCode || !config.apiKey) {
     showToast(tr('mailnest.requiredKeyProjectCodeShort', '请填写 Key 和 项目代码'), 'error');
     return;
   }
-  const btn = document.getElementById('mailnest-inline-test-btn');
+
   const statusEl = document.getElementById('mailnest-inline-status');
-  setInlineTestButton(btn, true, 'moemail.testing');
   clearLocalizedStatus(statusEl);
+  statusEl.style.color = '';
+  setMailNestBusy(true);
   try {
-    const result = await getAppApi().TestMailNestConnection(
-      JSON.stringify({
-        projectCode: projectCode,
-        apiKey: apiKey,
-      }),
-    );
-    if (result.success) {
-      statusEl.style.color = 'var(--success)';
-      setLocalizedStatus(
-        statusEl,
-        'mailnest.balance',
-        { n: result.balance || 0 },
-        '测试成功，余额为 {n}',
-      );
-    } else {
-      statusEl.style.color = 'var(--danger)';
-      if (result.error) clearLocalizedStatus(statusEl, result.error);
-      else setLocalizedStatus(statusEl, 'moemail.testFailed', {}, '连接失败');
+    const result = await getAppApi().TestMailNestConnection(JSON.stringify(config));
+    if (!result || result.success !== true || result.error) {
+      throw new Error(result?.error || tr('moemail.testFailedShort', '测试失败'));
     }
-  } catch (e) {
+    if (save) {
+      const saved = await getAppApi().SaveMailNestConfig(JSON.stringify(config));
+      if (!saved || saved.success !== true || saved.error) {
+        throw new Error(saved?.error || tr('toast.operationFailed', '保存失败'));
+      }
+      mailnestState.config = config;
+      updateMailNestSummary();
+    }
+    statusEl.style.color = 'var(--success)';
+    setLocalizedStatus(
+      statusEl,
+      'mailnest.balance',
+      { n: result.balance ?? 0 },
+      '测试成功，余额为 {n}',
+    );
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
     statusEl.style.color = 'var(--danger)';
-    setLocalizedStatus(statusEl, 'moemail.testFailedShort', {}, '测试失败');
+    clearLocalizedStatus(statusEl, message);
+    showToast(message, 'error');
+  } finally {
+    setMailNestBusy(false);
   }
-  setInlineTestButton(btn, false, 'moemail.testing');
+}
+
+export async function inlineTestMailNest() {
+  await runMailNestAction(false);
 }
 
 export async function inlineAddMailNest() {
-  const apiKey = document.getElementById('mailnest-inline-apikey').value.trim();
-  const projectCode = document.getElementById('mailnest-inline-project-code').value.trim();
-  if (!projectCode || !apiKey) {
-    showToast(tr('mailnest.requiredKeyProjectCodeShort', '请填写 Key 和 项目代码'), 'error');
-    return;
-  }
-
-  const btn = document.getElementById('mailnest-inline-test-btn');
-  const statusEl = document.getElementById('mailnest-inline-status');
-  setInlineTestButton(btn, true, 'moemail.testing');
-  clearLocalizedStatus(statusEl);
-  statusEl.style.color = '';
-  let testResult;
-  try {
-    testResult = await getAppApi().TestMailNestConnection(
-      JSON.stringify({
-        projectCode: projectCode,
-        apiKey: apiKey,
-      }),
-    );
-  } catch (e) {
-    testResult = { error: String(e) };
-  } finally {
-    if (btn) {
-      setInlineTestButton(btn, false, 'moemail.testing');
-    }
-  }
-
-  if (!testResult || testResult.error) {
-    const errMsg = (testResult && testResult.error) || tr('moemail.testFailedShort', '测试失败');
-    if (statusEl) {
-      statusEl.style.color = 'var(--danger)';
-      clearLocalizedStatus(statusEl, errMsg);
-    }
-    showToast(tr('moemail.cannotSaveUntilOk', '连接测试未通过，未保存配置：') + errMsg, 'error');
-    return;
-  }
-
-  mailnestState.config['apiKey'] = apiKey;
-  mailnestState.config['projectCode'] = projectCode;
-  const saveResult = await getAppApi().SaveMailNestConfig(JSON.stringify(mailnestState.config));
-  if (saveResult.error) {
-    showToast(tr('toast.operationFailed', '保存失败') + ': ' + saveResult.error, 'error');
-    return;
-  }
-
-  const summaryEl = document.getElementById('settings-mailnest-summary');
-  if (summaryEl) {
-    summaryEl.textContent = tr('mailnest.summaryActive', '已配置');
-  }
+  await runMailNestAction(true);
 }
 
 export async function loadMailNestConfig() {
   try {
-    mailnestState.config = await getAppApi().GetMailNestConfig();
+    mailnestState.config = (await getAppApi().GetMailNestConfig()) || {};
     updateMailNestUI();
   } catch (e) {
     console.error('[MailNest] 加载配置失败:', e);
@@ -112,20 +82,16 @@ export async function loadMailNestConfig() {
 }
 
 export function updateMailNestUI() {
-  if (mailnestState.config.projectCode) {
-    document.getElementById('mailnest-inline-apikey').value = mailnestState.config.apiKey;
-    document.getElementById('mailnest-inline-project-code').value =
-      mailnestState.config.projectCode;
-  } else {
-    document.getElementById('mailnest-inline-apikey').value = '';
-    document.getElementById('mailnest-inline-project-code').value = '';
-  }
+  document.getElementById('mailnest-inline-apikey').value = mailnestState.config.apiKey || '';
+  document.getElementById('mailnest-inline-project-code').value =
+    mailnestState.config.projectCode || '';
   updateMailNestSummary();
 }
 
 export function updateMailNestSummary() {
   const summaryEl = document.getElementById('settings-mailnest-summary');
-  summaryEl.textContent = mailnestState.config.projectCode
-    ? tr('mailnest.summaryActive', '已配置')
-    : tr('mailnest.summaryNone', '未配置');
+  summaryEl.textContent =
+    mailnestState.config.projectCode && mailnestState.config.apiKey
+      ? tr('mailnest.summaryActive', '已配置')
+      : tr('mailnest.summaryNone', '未配置');
 }
