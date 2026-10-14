@@ -53,6 +53,7 @@ func runDesktopApp() {
 	err := wails.Run(appOpts)
 
 	if err != nil {
+		reportStartupError(err)
 		log.Fatal(err)
 	}
 }

@@ -1,5 +1,7 @@
 /** @file 全局反馈消息的展示与自动移除。 */
 
+import { escapeHtml } from './html.js';
+
 export function showToast(msg, type) {
   let container = document.getElementById('toast-container');
   if (!container) {
@@ -19,7 +21,7 @@ export function showToast(msg, type) {
   toast.innerHTML =
     icon +
     '<span class="toast-msg">' +
-    msg +
+    escapeHtml(String(msg ?? '')) +
     '</span>' +
     '<div class="toast-progress"><div class="toast-progress-bar"></div></div>';
 

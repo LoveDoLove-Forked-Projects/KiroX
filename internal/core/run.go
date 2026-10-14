@@ -2,6 +2,7 @@ package core
 
 import (
 	"errors"
+	"fmt"
 	"log"
 	"regexp"
 	"strings"
@@ -26,16 +27,20 @@ func (r *Registrar) formatError(step string, err error) string {
 	}
 	var serviceErr *ServiceError
 	if errors.As(err, &serviceErr) {
-		if serviceErr.Code == "AUTHENTICATION_FAILED" {
-			message := "设置密码失败: AWS 身份验证失败，验证令牌可能无效或已过期"
-			if serviceErr.Captcha {
-				message += "，响应包含 CAPTCHA 验证信息"
-			}
-			return message + serviceErrorMetadata(serviceErr)
+		message := friendlyStepName(step) + "失败: "
+		if step == "SendOTP" {
+			message += "验证码未确认发送；"
 		}
-		message := friendlyStepName(step) + "失败"
+		if serviceErr.Captcha {
+			return message + "服务要求人工验证 (CAPTCHA)，请通过官方页面完成验证" + serviceErrorMetadata(serviceErr)
+		}
+		if serviceErr.Code == "AUTHENTICATION_FAILED" {
+			return message + "服务端身份验证未通过，请通过官方页面确认登录状态" + serviceErrorMetadata(serviceErr)
+		}
 		if serviceErr.Message != "" {
-			message += ": " + serviceErr.Message
+			message += scrubURLs(serviceErr.Message)
+		} else {
+			message += "服务拒绝当前请求"
 		}
 		return message + serviceErrorMetadata(serviceErr)
 	}
@@ -55,7 +60,7 @@ func (r *Registrar) formatError(step string, err error) string {
 
 	// HTTP 状态码错误
 	if strings.Contains(errMsg, "IP或浏览器指纹被检测") {
-		return "注册失败: IP或浏览器指纹被检测，请更换代理或重新生成指纹"
+		return "注册失败: IP或浏览器指纹被检测，请通过官方支持确认限制原因"
 	}
 	if strings.Contains(errMsg, "请求过于频繁") {
 		return "注册失败: 请求过于频繁，请稍后重试"
@@ -82,7 +87,7 @@ func (r *Registrar) formatError(step string, err error) string {
 
 	// 注册被拦截
 	if strings.Contains(errMsg, "BLOCKED") || strings.Contains(errMsg, "注册请求被拦截") {
-		return "注册被拦截: 请更换IP或稍后重试"
+		return "注册被拦截: 服务拒绝当前请求，请通过官方支持确认限制原因"
 	}
 
 	// 账号封禁
@@ -105,17 +110,20 @@ func (r *Registrar) formatError(step string, err error) string {
 }
 
 func serviceErrorMetadata(err *ServiceError) string {
-	metadata := err.Code
-	if err.RequestID != "" {
-		if metadata != "" {
-			metadata += ", "
-		}
-		metadata += "requestId=" + err.RequestID
+	parts := make([]string, 0, 3)
+	if err.StatusCode != 0 {
+		parts = append(parts, "HTTP "+fmt.Sprint(err.StatusCode))
 	}
-	if metadata == "" {
+	if err.Code != "" {
+		parts = append(parts, err.Code)
+	}
+	if err.RequestID != "" {
+		parts = append(parts, "requestId="+err.RequestID)
+	}
+	if len(parts) == 0 {
 		return ""
 	}
-	return " (" + metadata + ")"
+	return " (" + strings.Join(parts, ", ") + ")"
 }
 
 func friendlyStepName(step string) string {

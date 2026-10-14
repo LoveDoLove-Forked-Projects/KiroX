@@ -341,12 +341,12 @@ func (r *Registrar) Step9SendOTP() error {
 		},
 	}
 
-	_, status, _, err := r.DoPostRaw(r.Cfg.ProfileBase+"/api/send-otp", reqPayload, r.BuildProfileHeaders(ref))
+	body, status, headers, err := r.DoPostRaw(r.Cfg.ProfileBase+"/api/send-otp", reqPayload, r.BuildProfileHeaders(ref))
 	if err != nil {
 		return err
 	}
-	if status != 200 {
-		return fmt.Errorf("send-otp 失败 (%d)", status)
+	if err := sendOTPResponseError(status, headers, body); err != nil {
+		return err
 	}
 	r.ProfileVerificationStartedAt = time.Now()
 	log.Println("验证码已发送")

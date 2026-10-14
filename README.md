@@ -310,27 +310,13 @@ KiroX 正准备进行一次较大规模的架构重构，后续方向包括：
 
 ## 常见问题
 
-### IP 纯净度相关
+### 邮箱、代理和 Windows 启动问题
 
-如果运行中出现下面这两类报错，多半是当前出口 IP 不够纯净（代理 IP 已被 AWS / Microsoft 风控）。
+请先按失败步骤定位问题，参阅[故障排查](docs/troubleshooting.md)：Cloud-Mail 重复测试 401、Outlook 垃圾邮件、代理检测 / TUN、MailNest 入口和 Windows 10 启动均有对应说明。
 
-**情况一：发送邮箱验证码响应 OTP 400**
+Outlook 垃圾邮件读取修复在主分支的 v1.0.4 标签之后；原有 v1.0.4 安装包不包含这项修复，需要包含后续提交的构建。
 
-![情况一](docs/images/1.png)
-![情况一](docs/images/3.png)
-
-建议更换更干净的住宅代理。
-
-> 如果使用的是自建邮箱或一次性邮箱（MoeMail 等），OTP 400 也可能是邮箱域名已被 Microsoft / AWS 拉黑导致；可换一个域名再试。
-
-**情况二：注册流程直接卡住或邮箱无法访问**
-
-![情况二](docs/images/2.png)
-
-此时先用本机浏览器（带相同代理）尝试打开 [outlook.live.com](https://outlook.live.com)：
-
-- 如果浏览器都打不开 / 跳验证码 → 当前 IP 已被 Microsoft 风控，需要换代理
-- 如果浏览器能正常访问 → 检查 Outlook 账号的 RefreshToken 是否仍然有效
+`send-otp` 返回 HTTP 400 表示发送阶段失败，不能单凭状态码断定 IP 质量或邮箱收件接口故障。保留脱敏后的错误码、失败步骤和 `requestId`。人机验证、账号封禁和支付资格应通过服务方官方流程处理。
 
 ### macOS 提示「应用已损坏，无法打开」
 

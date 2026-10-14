@@ -709,16 +709,7 @@ func classifyError(errorMsg string) string {
 }
 
 func isCaptchaError(errorMsg string) bool {
-	markers := []string{
-		"CAPTCHA_REQUIRED",
-		"CAPTCHA/风控验证",
-	}
-	for _, marker := range markers {
-		if strings.Contains(errorMsg, marker) {
-			return true
-		}
-	}
-	return false
+	return strings.Contains(strings.ToUpper(errorMsg), "CAPTCHA")
 }
 
 func isRetryableRegistrationError(errorMsg string) bool {
@@ -746,6 +737,9 @@ func isRetryableRegistrationError(errorMsg string) bool {
 func isKillSwitchError(errorMsg string) bool {
 	if errorMsg == "" {
 		return false
+	}
+	if strings.Contains(errorMsg, "发送验证码失败") && strings.Contains(errorMsg, "HTTP 400") {
+		return true
 	}
 	triggers := []string{
 		"send-otp 失败 (400)", // Step9 原始 400

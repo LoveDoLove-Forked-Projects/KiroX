@@ -292,27 +292,13 @@ The frontend calls Go methods through `window.go.main.App` and polls task status
 
 ## FAQ
 
-### IP cleanliness
+### Mailbox, proxy, and Windows startup problems
 
-If you hit either of the errors below, the egress IP is likely flagged by AWS / Microsoft.
+Identify the failing step first. The [troubleshooting guide (Chinese)](docs/troubleshooting.md) covers repeated Cloud-Mail 401 responses, Outlook junk mail, proxy probes / TUN, MailNest configuration, and Windows 10 startup.
 
-**Case 1: OTP 400 on email verification send**
+The Outlook junk-mail fix was committed to main after the v1.0.4 tag. Existing v1.0.4 installers do not include it; use a build containing the later commit.
 
-![Case 1](docs/images/1.png)
-![Case 1](docs/images/3.png)
-
-Switch to a cleaner residential proxy.
-
-> When using a self-hosted or disposable mailbox (MoeMail, etc.), OTP 400 can also mean the email *domain* is blacklisted by Microsoft / AWS — try a different domain.
-
-**Case 2: Registration stalls or the mailbox is unreachable**
-
-![Case 2](docs/images/2.png)
-
-Try opening [outlook.live.com](https://outlook.live.com) in a real browser using the same proxy:
-
-- Browser also fails / shows CAPTCHA → the IP is blocked by Microsoft; change the proxy
-- Browser works → verify the Outlook account's RefreshToken is still valid
+HTTP 400 from `send-otp` indicates a failure during sending. That status alone does not establish an IP reputation problem or a mailbox API failure. Retain the redacted error code, failing step, and `requestId`. Use the service provider's official process for interactive verification, account restrictions, and payment eligibility.
 
 ### macOS: "App is damaged and can't be opened"
 

@@ -2,6 +2,17 @@
 
 export default [
   [
+    '服务要求人工验证 (CAPTCHA)，请通过官方页面完成验证',
+    'manual verification (CAPTCHA) is required; complete it on the official page',
+  ],
+  [
+    '服务端身份验证未通过，请通过官方页面确认登录状态',
+    'server authentication failed; check your sign-in status on the official page',
+  ],
+  ['请通过官方支持确认限制原因', 'contact official support to confirm the restriction'],
+  ['服务拒绝当前请求', 'the service rejected this request'],
+  ['验证码未确认发送', 'verification code delivery was not confirmed'],
+  [
     '密码已设置但验活失败，邮箱已消耗，不再重试',
     'password set but verification failed; email consumed, no retry',
   ],
