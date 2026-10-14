@@ -52,6 +52,19 @@ KiroX 批量导入时每行一个 <code>协议://用户:密码@host:port</code>�
 支持免费测试，专属折扣码：<code>0205</code>
 </p>
 
+<p align="center">
+  <a href="https://www.rapidproxy.io/?ref=KiroX" target="_blank">
+    <img src="docs/rapidproxy.png" alt="RapidProxy 动态住宅代理 $0.55/GB 起，静态住宅 IP $5/IP/月" width="800">
+  </a>
+</p>
+
+<p align="left">
+<b><a href="https://www.rapidproxy.io/?ref=KiroX" target="_blank">RapidProxy</a></b> 为开发者和企业提供高性能代理 IP 服务，拥有覆盖全球 200+ 国家和地区的 9000 万+住宅 IP，支持智能轮换、精准地理定位及高并发连接。<br>
+动态住宅代理低至 $0.55/GB，静态住宅 IP 仅需 $5/IP/月，动态住宅流量永不过期。<br>
+广泛适用于网页采集、AI 数据获取、SEO 监控和电商分析，支持 HTTP/HTTPS/SOCKS5 协议。<br>
+使用折扣码 <code>RAPID10</code> 即享 <b>9 折优惠</b>，立即免费试用。
+</p>
+
 ---
 
 ## 功能特性
