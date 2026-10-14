@@ -29,18 +29,6 @@ KiroX 是一款基于 [Wails v2](https://wails.io) 构建的 Kiro 桌面注册�
 ## 赞助与鸣谢
 
 <p align="center">
-  <a href="https://www.ipwo.net/?ref=githubKiroX" target="_blank">
-    <img src="docs/ipwo.webp" alt="IPWO" width="800">
-  </a>
-</p>
-
-<p align="left">
-<b><a href="https://www.ipwo.net/?ref=githubKiroX" target="_blank">IPWO</a></b> 提供覆盖 195+ 国家和地区的住宅代理 IP，支持 HTTP、HTTPS 及 SOCKS5 协议。<br>
-适用于 Kiro、AI Coding、浏览器自动化及海外网络访问，可根据不同地区和业务需求选择相应的网络环境。<br>
-支持免费测试，专属折扣码：<code>0205</code>
-</p>
-
-<p align="center">
   <a href="https://proxylane.dev/?utm_source=kirox&amp;utm_medium=partnership&amp;utm_campaign=kirox_sponsor_202610&amp;utm_content=github_readme" target="_blank">
     <img src="docs/proxylane_kirox_1600x320.png" alt="ProxyLane 住宅代理，首次购买使用优惠码 KIROX30 享 7 折" width="800">
   </a>
